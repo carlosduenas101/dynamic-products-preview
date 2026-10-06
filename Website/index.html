@@ -1,0 +1,3871 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Dynamic Products Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap"
+    />
+    <meta
+      name="description"
+      content="Dynamic Products, Inc. manufactures butt-weld fittings and induction pipe bends in Houston, Texas, since 1969. ISO 9001:2015, ASME PRT, PED, CRN, Buy America compliant. Proudly made in the USA."
+    />
+    <style>
+      /* Layout: white brand bar, dark forge hero with the plant's own photos, spec strip, product tiles, HTML range table, about + milestones, solutions, brand-navy quality band, shop-floor gallery, brand-red RFQ band, ink footer. One deliberate look, no dark variant. */
+      :root {
+        --ink: #080d15;
+        --navy: #0a236f; /* Dynamic Products logo navy */
+        --navy-deep: #071a52;
+        --maroon: #822628; /* logo tagline red */
+        --red: #b3262d; /* brightened brand red for CTAs */
+        --red-dark: #822628;
+        --steel: #8887a1; /* logo frame grey */
+        --paper: #eceff3;
+        --fg: #101725;
+        --muted: #48546a;
+        --ember: #ff8a2a;
+        --line: #d3d9e1;
+        --display: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        --body: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        --mono: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color-scheme: light;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--fg);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      svg {
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      .wrap {
+        width: 100%;
+        padding-inline: 50px;
+        margin-inline: auto;
+      }
+      :focus-visible {
+        outline: 3px solid var(--ember);
+        outline-offset: 3px;
+      }
+
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 3px;
+        background: var(--red);
+        flex: none;
+      }
+      h2 {
+        font-family: var(--display);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+        line-height: 1;
+        letter-spacing: 0.005em;
+        text-wrap: balance;
+      }
+      h3 {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1.45rem;
+        line-height: 1.05;
+        letter-spacing: 0.02em;
+      }
+      .mono {
+        font-family: var(--mono);
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .section {
+        padding-block: clamp(56px, 8vw, 104px);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 26px;
+        font-family: var(--body);
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .btn-red {
+        background: var(--red);
+        color: #fff;
+      }
+      .btn-red:hover {
+        background: var(--red-dark);
+      }
+      .btn-line {
+        border-color: rgba(255, 255, 255, 0.75);
+        color: #fff;
+        background: transparent;
+      }
+      .btn-line:hover {
+        background: #fff;
+        color: var(--ink);
+      }
+
+      /* header: transparent over the hero, turns solid white once the page scrolls */
+      .site-header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 50;
+        padding-top: env(safe-area-inset-top, 0px);
+        background: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        transition:
+          background 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
+        --lg-navy: #0a236f;
+        --lg-grey: #8887a1;
+        --lg-white: #fff;
+        --lg-word: #fff;
+        --lg-tag: #ffb3b6;
+        --nav: #fff;
+      }
+      .site-header.solid {
+        background: #fff;
+        border-bottom: 3px solid var(--navy);
+        box-shadow: 0 6px 18px -12px rgba(8, 13, 21, 0.5);
+        --lg-word: #0a236f;
+        --lg-tag: #822628;
+        --nav: var(--navy);
+      }
+      .site-header:not(.solid) {
+        background: linear-gradient(
+          180deg,
+          rgba(6, 9, 15, 0.55),
+          rgba(6, 9, 15, 0)
+        );
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        min-height: 88px;
+      }
+      .logo {
+        display: block;
+        flex: none;
+        line-height: 0;
+        color: inherit;
+      }
+      .logo-svg {
+        height: 56px;
+        width: auto;
+        display: block;
+        overflow: visible;
+      }
+      .logo-svg .cls-1 {
+        fill: var(--lg-navy);
+      }
+      .logo-svg .cls-3 {
+        fill: var(--lg-grey);
+      }
+      .logo-svg .cls-4 {
+        fill: var(--lg-white);
+      }
+      .logo-svg .wm {
+        fill: var(--lg-word);
+        transition: fill 0.3s;
+      }
+      .logo-svg .tg {
+        fill: var(--lg-tag);
+        transition: fill 0.3s;
+      }
+      .site-header:not(.solid):not([data-open="true"]) .logo-svg {
+        filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
+      }
+      .nav {
+        display: flex;
+        gap: 16px;
+        margin-left: auto;
+        align-items: center;
+      }
+      .nav a {
+        white-space: nowrap;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--nav);
+        padding-block: 8px;
+        border-bottom: 2px solid transparent;
+        transition: color 0.3s;
+      }
+      .site-header:not(.solid) .nav a {
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+      }
+      .nav a:hover {
+        border-color: var(--red);
+      }
+      .bar .btn {
+        min-height: 42px;
+        padding-inline: 20px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+      .menu-btn {
+        display: none;
+        margin-left: auto;
+        background: transparent;
+        border: 1px solid currentColor;
+        color: var(--nav);
+        width: 46px;
+        height: 46px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+      }
+      .menu-btn svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* hero: full-screen Three.js scene of a 60" induction bend on the crane */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background: #06080c;
+        isolation: isolate;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: var(--hero-img-h, 100%);
+        z-index: -3;
+        background: #06080c url("images/current-site/HeroBackground.jpg") 25%
+          35% / cover no-repeat;
+        -webkit-mask-image: linear-gradient(180deg, #000 80%, transparent);
+        mask-image: linear-gradient(180deg, #000 80%, transparent);
+      }
+      .hero-shade {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(5, 7, 11, 0.82) 0%,
+            rgba(5, 7, 11, 0.55) 34%,
+            rgba(5, 7, 11, 0) 62%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(5, 7, 11, 0.45) 0%,
+            rgba(5, 7, 11, 0) 22%,
+            rgba(5, 7, 11, 0) 70%,
+            rgba(5, 7, 11, 0.7) 100%
+          );
+      }
+      .hero-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-top: calc(88px + 24px + env(safe-area-inset-top, 0px));
+        padding-bottom: 28px;
+      }
+      .hero-copy {
+        max-width: 100%;
+      }
+      .hero h1 {
+        font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: clamp(2.8rem, 5.6vw, 5.8rem);
+        line-height: 0.92;
+        letter-spacing: 0.005em;
+        margin-top: 18px;
+        text-wrap: balance;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      }
+      .hero .lede {
+        max-width: 34rem;
+        margin-top: 22px;
+        font-size: 1.08rem;
+        color: #dfe5ec;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+      }
+      .hero .btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 32px;
+      }
+      .hero .eyebrow {
+        color: #e9edf2;
+      }
+      .hero h1 span {
+        display: block;
+        white-space: nowrap;
+      }
+      /* stats + fitting cards inside the hero, 40px under the buttons */
+      .hero-panel {
+        margin-top: 40px;
+        background: #eceef1;
+        color: var(--fg);
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+      }
+      .hero-panel .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        background: #f5f6f8;
+      }
+      .hero-panel .stat {
+        padding: 14px 14px 12px;
+        text-align: center;
+        border-left: 1px solid #d6dbe2;
+      }
+      .hero-panel .stat:first-child {
+        border-left: 0;
+      }
+      .hero-panel .stat b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(1.9rem, 3vw, 2.6rem);
+        line-height: 1;
+        color: var(--navy);
+        font-variant-numeric: tabular-nums;
+      }
+      .hero-panel .stat strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+      .hero-panel .stat span {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .fcards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        padding: 14px 16px 16px;
+      }
+      .fcard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        background: linear-gradient(180deg, #f7f8fa 0%, #e1e5ea 100%);
+        padding: 10px 12px 14px;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .fcard:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 26px -16px rgba(8, 13, 21, 0.5);
+      }
+      .fcard img {
+        width: 100%;
+        height: auto;
+        max-height: 190px;
+        aspect-ratio: 64/34;
+        object-fit: cover;
+        display: block;
+      }
+      .fcard img.is-3d {
+        object-fit: contain;
+      }
+      .fcard b {
+        margin-top: 6px;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+      .fcard small {
+        margin-top: 3px;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .rise {
+        animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      .rise.d1 {
+        animation-delay: 0.08s;
+      }
+      .rise.d2 {
+        animation-delay: 0.18s;
+      }
+      .rise.d3 {
+        animation-delay: 0.3s;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* stats */
+      .stats {
+        background: #fff;
+        border-top: 4px solid var(--red);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .stat {
+        padding: 30px 18px;
+        text-align: center;
+        border-left: 1px solid var(--line);
+      }
+      .stat:first-child {
+        border-left: 0;
+      }
+      .stat b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: 0.01em;
+        color: var(--navy);
+        font-variant-numeric: tabular-nums;
+      }
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      /* products */
+      .products {
+        background: var(--paper);
+      }
+      .head-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 24px 56px;
+        align-items: end;
+        margin-bottom: 44px;
+      }
+      .head-row h2 {
+        margin-top: 16px;
+      }
+      .head-row p {
+        color: var(--muted);
+        max-width: 32rem;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: #fff;
+        border: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        box-shadow:
+          0 2px 6px rgba(8, 13, 21, 0.06),
+          0 18px 40px -12px rgba(8, 13, 21, 0.28);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow:
+          0 4px 10px rgba(8, 13, 21, 0.08),
+          0 32px 60px -14px rgba(8, 13, 21, 0.38);
+      }
+      .card .ph {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        background: #d9dee5;
+      }
+      .card .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s;
+      }
+      .card:hover .ph img {
+        transform: scale(1.04);
+      }
+      .card .txt {
+        padding: 20px 20px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+      }
+      .card dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 4px 12px;
+        font-size: 0.88rem;
+      }
+      .card dt {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding-top: 3px;
+      }
+      .card dd {
+        margin: 0;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+      }
+      .card .go {
+        margin-top: auto;
+        padding-top: 8px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: var(--red);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .types {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 34px;
+      }
+      .types .mono {
+        color: var(--muted);
+        margin-right: 6px;
+      }
+      .chip {
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0 16px;
+        border: 1px solid #b5bfcc;
+        background: #fff;
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .chip:hover {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+
+      /* range table */
+      .range {
+        background: #fff;
+      }
+      .range .head-row {
+        margin-bottom: 28px;
+      }
+      .tbl-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        -webkit-overflow-scrolling: touch;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 760px;
+        font-size: 0.92rem;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        background: var(--navy);
+        color: #fff;
+        text-align: left;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 12px 14px;
+        white-space: nowrap;
+      }
+      td {
+        padding: 11px 14px;
+        border-top: 1px solid var(--line);
+        vertical-align: top;
+      }
+      tbody tr:nth-child(even) td {
+        background: #f6f8fa;
+      }
+      td.p {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 1.08rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+      }
+      td.n {
+        white-space: nowrap;
+        font-weight: 600;
+      }
+      .materials {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 28px;
+        margin-top: 28px;
+      }
+      .materials h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tags span {
+        font-size: 0.86rem;
+        font-weight: 500;
+        padding: 6px 12px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+      .tags.svc span {
+        background: #fff;
+        border-left: 3px solid var(--red);
+      }
+      .materials .tags span {
+        border-radius: 20px;
+      }
+      .mat-block h3 {
+        margin-bottom: 12px;
+      }
+      .mat-tbl table {
+        min-width: 640px;
+      }
+      .mat-tbl td {
+        font-size: 0.9rem;
+      }
+      .mat-tbl td.p {
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+      .materials {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) !important;
+        align-items: start;
+      }
+      .src-note {
+        margin-top: 16px;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      /* about */
+      .about {
+        background: var(--paper);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 0;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .about figure {
+        margin: 0;
+        position: relative;
+        min-width: 0;
+        background: #111;
+      }
+      .about figure img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        object-fit: cover;
+      }
+      .tag {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        background: rgba(8, 13, 21, 0.82);
+        color: #dfe5ec;
+        padding: 5px 10px;
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .about-copy {
+        padding: clamp(24px, 4vw, 48px);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-width: 0;
+      }
+      .about-copy h2 {
+        font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      }
+      .about-copy p {
+        color: var(--muted);
+      }
+      .inds {
+        display: flex;
+        flex-wrap: wrap;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+      .inds span {
+        font-family: var(--display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 1.05rem;
+        padding: 2px 14px;
+        border-left: 2px solid var(--red);
+        margin-block: 4px;
+      }
+      .inds span:first-child {
+        padding-left: 0;
+        border-left: 0;
+      }
+      .timeline {
+        margin-top: 40px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+      }
+      .timeline ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(150px, 1fr));
+        min-width: 1500px;
+        border-top: 3px solid var(--navy);
+      }
+      .timeline li {
+        padding: 16px 14px 0 0;
+        position: relative;
+      }
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 0;
+        width: 13px;
+        height: 13px;
+        background: #fff;
+        border: 3px solid var(--red);
+        border-radius: 50%;
+      }
+      .timeline b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: var(--navy);
+        margin-top: 6px;
+      }
+      .timeline span {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.86rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .tl-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-top: 48px;
+      }
+      .tl-head .mono {
+        color: var(--muted);
+      }
+
+      /* solutions */
+      .solutions {
+        background: #fff;
+      }
+      .sol-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 24px 56px;
+        align-items: end;
+        margin-bottom: 40px;
+      }
+      .sol-top h2 {
+        margin-top: 16px;
+      }
+      .sol-top p {
+        color: var(--muted);
+      }
+      .sol-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .sol {
+        background: #fff;
+        padding: 22px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 0;
+      }
+      .sol .ic {
+        width: 44px;
+        height: 44px;
+        background: var(--navy);
+        color: #fff;
+        display: grid;
+        place-items: center;
+      }
+      .sol .ic svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .sol .mono {
+        color: var(--red);
+      }
+      .sol h3 {
+        font-size: 1.25rem;
+      }
+      .sol p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* quality */
+      .quality {
+        background: #061848;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      /* parallax photo layers behind the quality and RFQ bands */
+      .px {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -25%;
+        height: 150%;
+        z-index: -2;
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+        pointer-events: none;
+      }
+      .px-tint {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .px.bp {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgdmlld0JveD0iMCAwIDEyMDAgODAwIj4KPGRlZnM+CjxwYXR0ZXJuIGlkPSJnMSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNMjAgMEgwVjIwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMjgiIHN0cm9rZS13aWR0aD0iLjYiLz48L3BhdHRlcm4+CjxwYXR0ZXJuIGlkPSJnMiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoIGQ9Ik0xMDAgMEgwVjEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj4KPG1hcmtlciBpZD0iYSIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSIxMCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiPjxwYXRoIGQ9Ik0wIDEuNUwxMCA1TDAgOC41eiIgZmlsbD0iI2ZmZiIvPjwvbWFya2VyPgo8L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNnMSkiLz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2cyKSIvPgo8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS42IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiPgogIAogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkwIDkwKSI+CiAgICA8cGF0aCBkPSJNMCAzMDBBMzAwIDMwMCAwIDAgMSAzMDAgMCIvPgogICAgPHBhdGggZD0iTTEyMCAzMDBBMTgwIDE4MCAwIDAgMSAzMDAgMTIwIi8+CiAgICA8cGF0aCBkPSJNNjAgMzAwQTI0MCAyNDAgMCAwIDEgMzAwIDYwIiBzdHJva2UtZGFzaGFycmF5PSIxOCA2IDMgNiIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8cGF0aCBkPSJNMCAzMDBIMTIwTTMwMCAwVjEyMCIvPgogICAgPHBhdGggZD0iTTMwMCAzMDBMNjAgMzAwTTMwMCAzMDBMMzAwIDYwIiBzdHJva2UtZGFzaGFycmF5PSI0IDUiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPHBhdGggZD0iTTMwMCAzMDBMMTMwIDEzMCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+CiAgICA8dGV4dCB4PSIxNzgiIHk9IjIzNiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjE1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNDUgMTc4IDIzNikiPlIgPSAxLjVEPC90ZXh0PgogICAgPHBhdGggZD0iTTAgMzMwSDEyMCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItc3RhcnQ9InVybCgjYSkiIG1hcmtlci1lbmQ9InVybCgjYSkiLz4KICAgIDxwYXRoIGQ9Ik0wIDMwNVYzNDBNMTIwIDMwNVYzNDAiIHN0cm9rZS13aWR0aD0iLjgiLz4KICAgIDx0ZXh0IHg9IjQwIiB5PSIzNTUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxNCI+T0QgNjAiPC90ZXh0PgogICAgPHRleHQgeD0iMCIgeT0iLTE4IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTMiIGxldHRlci1zcGFjaW5nPSIyIj5ERVRBSUwgQSAgOTDCsCBMUiBFTEJPVzwvdGV4dD4KICA8L2c+CiAgCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTYwIDEyMCkiPgogICAgPHJlY3QgeD0iMCIgeT0iMTIwIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjEyMCIvPgogICAgPHBhdGggZD0iTTEyMCAxMjBWMEgyNDBWMTIwIiAvPgogICAgPHBhdGggZD0iTS0yMCAxODBIMzgwTTE4MCAtMjBWMjUwIiBzdHJva2UtZGFzaGFycmF5PSIxOCA2IDMgNiIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8cGF0aCBkPSJNMCAyNzBIMzYwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1zdGFydD0idXJsKCNhKSIgbWFya2VyLWVuZD0idXJsKCNhKSIvPgogICAgPHBhdGggZD0iTTAgMjQ1VjI4ME0zNjAgMjQ1VjI4MCIgc3Ryb2tlLXdpZHRoPSIuOCIvPgogICAgPHRleHQgeD0iMTUwIiB5PSIyOTIiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxNCI+QyA9IDIgeCAyNyI8L3RleHQ+CiAgICA8cGF0aCBkPSJNMjcwIDBWMTIwIiBzdHJva2Utd2lkdGg9IjEiIG1hcmtlci1zdGFydD0idXJsKCNhKSIgbWFya2VyLWVuZD0idXJsKCNhKSIvPgogICAgPHBhdGggZD0iTTI0NSAwSDI4NSIgc3Ryb2tlLXdpZHRoPSIuOCIvPgogICAgPHRleHQgeD0iMjgwIiB5PSI2NiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjE0Ij5NID0gMjciPC90ZXh0PgogICAgPHRleHQgeD0iMCIgeT0iLTMwIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTMiIGxldHRlci1zcGFjaW5nPSIyIj5ERVRBSUwgQiAgRVFVQUwgVEVFPC90ZXh0PgogIDwvZz4KICAKICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDAgNTAwKSI+CiAgICA8cGF0aCBkPSJNMCAwVjIwMEw2MCAyMDBMMjQwIDE1MFY1MEw2MCAwWiIvPgogICAgPHBhdGggZD0iTTAgMEg2ME0wIDIwMEg2MCIgLz4KICAgIDxwYXRoIGQ9Ik0tMjAgMTAwSDI3MCIgc3Ryb2tlLWRhc2hhcnJheT0iMTggNiAzIDYiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPHBhdGggZD0iTS0zMCAwVjIwMCIgc3Ryb2tlLXdpZHRoPSIxIiBtYXJrZXItc3RhcnQ9InVybCgjYSkiIG1hcmtlci1lbmQ9InVybCgjYSkiLz4KICAgIDx0ZXh0IHg9Ii03MCIgeT0iMTA0IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTQiIHRyYW5zZm9ybT0icm90YXRlKC05MCAtNTggMTAwKSI+w5ggNjAiPC90ZXh0PgogICAgPHBhdGggZD0iTTI3MCA1MFYxNTAiIHN0cm9rZS13aWR0aD0iMSIgbWFya2VyLXN0YXJ0PSJ1cmwoI2EpIiBtYXJrZXItZW5kPSJ1cmwoI2EpIi8+CiAgICA8dGV4dCB4PSIyODAiIHk9IjEwNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjE0Ij7DmCAzNiI8L3RleHQ+CiAgICA8dGV4dCB4PSIwIiB5PSItMjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxMyIgbGV0dGVyLXNwYWNpbmc9IjIiPkRFVEFJTCBDICBDT05DLiBSRURVQ0VSPC90ZXh0PgogIDwvZz4KICAKICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDQwIDI1MCkiPgogICAgPGNpcmNsZSByPSIxMTAiLz48Y2lyY2xlIHI9IjkyIi8+PGNpcmNsZSByPSIxMDEiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8cGF0aCBkPSJNLTEzNSAwSDEzNU0wIC0xMzVWMTM1IiBzdHJva2UtZGFzaGFycmF5PSIxOCA2IDMgNiIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8cGF0aCBkPSJNNzggLTc4TDExOCAtMTE4SDE3MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIxMjQiIHk9Ii0xMjQiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxMyI+V1QgMC41MCI8L3RleHQ+CiAgICA8dGV4dCB4PSItNjAiIHk9IjE2MCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjEzIiBsZXR0ZXItc3BhY2luZz0iMiI+U0VDVElPTiBBLUE8L3RleHQ+CiAgPC9nPgogIAogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMCA1NjApIj4KICAgIDxwYXRoIGQ9Ik0wIDBIMTgwVjYwSDIwTDAgNDBaIi8+CiAgICA8cGF0aCBkPSJNMCA0MEwtMTAgNjAiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPHRleHQgeD0iMzAiIHk9Ijk1IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTMiPjM3LjXCsCDCsSAyLjXCsCBCRVZFTDwvdGV4dD4KICAgIDxwYXRoIGQ9Ik0wIDBMLTQwIC00MCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSItMjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxMyIgbGV0dGVyLXNwYWNpbmc9IjIiPkRFVEFJTCBEICBXRUxEIFBSRVA8L3RleHQ+CiAgPC9nPgogIAogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkzMCA2MjApIj4KICAgIDxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMTUwIi8+CiAgICA8cGF0aCBkPSJNMCA0MEgyNTBNMCA4MEgyNTBNMCAxMTVIMjUwTTEyNSA4MFYxNTAiLz4KICAgIDx0ZXh0IHg9IjEyIiB5PSIyNyIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+RFlOQU1JQyBQUk9EVUNUUywgSU5DLjwvdGV4dD4KICAgIDx0ZXh0IHg9IjEyIiB5PSI2NSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIiBmb250LXNpemU9IjEyIj5CVVRULVdFTEQgRklUVElOR1M8L3RleHQ+CiAgICA8dGV4dCB4PSIxMiIgeT0iMTAzIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTEiPkRXRyBEUC02MC1MUjkwPC90ZXh0PgogICAgPHRleHQgeD0iMTM3IiB5PSIxMDMiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxMSI+QVNNRSBCMTYuOTwvdGV4dD4KICAgIDx0ZXh0IHg9IjEyIiB5PSIxMzgiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIgZm9udC1zaXplPSIxMSI+U0NBTEUgMToyMDwvdGV4dD4KICAgIDx0ZXh0IHg9IjEzNyIgeT0iMTM4IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiIGZvbnQtc2l6ZT0iMTEiPlNIRUVUIDEgT0YgMTwvdGV4dD4KICA8L2c+CjwvZz4KPC9zdmc+Cg==");
+        background-size: 1200px 800px;
+        background-repeat: repeat;
+        background-position: 0 0;
+      }
+      .quality .px-tint {
+        background: linear-gradient(
+          90deg,
+          rgba(10, 35, 111, 0.89) 0%,
+          rgba(10, 35, 111, 0.81) 55%,
+          rgba(10, 35, 111, 0.73) 100%
+        );
+      }
+      .rfq .px.bp {
+        background-position: -420px -260px;
+      }
+      .rfq .px-tint {
+        background: linear-gradient(
+          120deg,
+          rgba(179, 38, 45, 0.85) 0%,
+          rgba(130, 38, 40, 0.88) 100%
+        );
+      }
+      .quality .wrap {
+        position: relative;
+      }
+      .quality .eyebrow {
+        color: #dbe4f2;
+      }
+      .quality h2 {
+        margin-top: 16px;
+        max-width: 16ch;
+      }
+      .q-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 40px clamp(32px, 5vw, 72px);
+        margin-top: 44px;
+        align-items: start;
+      }
+      .creds {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .cred {
+        background: rgba(8, 28, 92, 0.8);
+        padding: 22px 22px 24px;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 16px;
+        align-items: start;
+      }
+      .cred .badge {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6);
+      }
+      .cred .badge.sq {
+        border-radius: 12px;
+        padding: 6px;
+      }
+      .cred .badge.ico {
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .cred .badge.ico svg {
+        width: 30px;
+        height: 30px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .cred .mono {
+        color: #ff9aa0;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .cred h3 {
+        font-size: 1.3rem;
+      }
+      .cred p {
+        margin-top: 8px;
+        color: #c9d4ea;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .q-side {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+      }
+      .plate {
+        background: linear-gradient(160deg, #cfd6de, #8f99a6 55%, #b9c1cb);
+        color: #141a24;
+        padding: 26px 24px;
+        border: 1px solid #e9edf2;
+        box-shadow: 0 24px 40px -22px rgba(0, 0, 0, 0.7);
+      }
+      .plate .mono {
+        color: #2e3846;
+        display: block;
+      }
+      .plate pre {
+        margin: 16px 0 0;
+        font-family: var(--mono);
+        font-weight: 500;
+        font-size: clamp(0.72rem, 1.6vw, 0.92rem);
+        line-height: 1.9;
+        letter-spacing: 0.05em;
+        white-space: pre-wrap;
+        word-break: break-word;
+        color: #0b1018;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      }
+      .plate small {
+        display: block;
+        margin-top: 16px;
+        color: #2e3846;
+        font-size: 0.82rem;
+        line-height: 1.5;
+      }
+      .plate-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 24px 40px -22px rgba(0, 0, 0, 0.75);
+      }
+      .stds h3 {
+        font-size: 1.15rem;
+        margin-bottom: 12px;
+      }
+      .stds .tags span {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #e6ecf6;
+        font-family: var(--mono);
+        font-size: 0.76rem;
+        letter-spacing: 0.04em;
+      }
+
+      /* gallery */
+      .gallery {
+        background: var(--ink);
+        color: #fff;
+      }
+      .gallery .eyebrow {
+        color: #dfe5ec;
+      }
+      .gal-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .gal-head h2 {
+        margin-top: 16px;
+      }
+      .gal-head p {
+        color: #9aa6b6;
+        max-width: 26rem;
+        font-size: 0.92rem;
+      }
+      .gal {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 210px;
+        gap: 8px;
+      }
+      .gal figure {
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        background: #1a212c;
+        min-width: 0;
+      }
+      .gal figure.w {
+        grid-column: span 2;
+      }
+      .gal figure.t {
+        grid-row: span 2;
+      }
+      .gal img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s;
+      }
+      .gal figure:hover img {
+        transform: scale(1.05);
+      }
+      .gal figcaption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 56px 18px 16px;
+        background: linear-gradient(
+          transparent,
+          rgba(0, 0, 0, 0.55) 45%,
+          rgba(0, 0, 0, 0.88)
+        );
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1rem, 1.35vw, 1.35rem);
+        line-height: 1.15;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.95),
+          0 0 14px rgba(0, 0, 0, 0.85),
+          0 0 2px rgba(0, 0, 0, 0.9);
+      }
+      .gal figure.w figcaption {
+        font-size: clamp(1.15rem, 1.7vw, 1.7rem);
+      }
+
+      /* rfq */
+      .rfq {
+        background: #4a1214;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .rfq-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+        gap: 36px clamp(32px, 6vw, 80px);
+        align-items: center;
+      }
+      .rfq .on-red {
+        color: #fff;
+      }
+      .rfq .on-red::before {
+        background: #fff;
+      }
+      .rfq h2 {
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        margin-top: 16px;
+      }
+      .rfq .lead {
+        margin-top: 18px;
+        max-width: 30rem;
+        color: #ffe4e5;
+      }
+      .direct {
+        margin-top: 28px;
+        display: grid;
+        gap: 6px;
+      }
+      .direct b {
+        font-family: var(--display);
+        font-size: 2rem;
+        letter-spacing: 0.02em;
+        line-height: 1.1;
+        font-weight: 700;
+      }
+      .direct span {
+        color: #ffe4e5;
+        overflow-wrap: anywhere;
+      }
+      .form {
+        background: rgba(0, 0, 0, 0.42);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 20px;
+        color: #fff;
+        padding: clamp(20px, 3vw, 32px);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        box-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.18),
+          0 28px 60px -10px rgba(0, 0, 0, 0.55),
+          0 60px 110px -30px rgba(0, 0, 0, 0.5);
+      }
+      .form label {
+        display: grid;
+        gap: 6px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #fff;
+        min-width: 0;
+      }
+      .form .full {
+        grid-column: 1/-1;
+      }
+      .form input,
+      .form select,
+      .form textarea {
+        font: inherit;
+        font-size: 0.98rem;
+        letter-spacing: 0;
+        text-transform: none;
+        font-weight: 400;
+        color: var(--fg);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid #aab4c2;
+        border-radius: 0;
+        padding: 12px;
+        width: 100%;
+        min-width: 0;
+      }
+      .form textarea {
+        min-height: 92px;
+        resize: vertical;
+      }
+      .form input:focus,
+      .form select:focus,
+      .form textarea:focus {
+        outline: 3px solid var(--ember);
+        outline-offset: 0;
+        background: #fff;
+      }
+      .form .btn {
+        grid-column: 1/-1;
+        background: var(--navy);
+        color: #fff;
+      }
+      .form .btn:hover {
+        background: #12318f;
+      }
+      .form .note {
+        grid-column: 1/-1;
+        font-size: 0.86rem;
+        color: #fff;
+        min-height: 1.3em;
+      }
+
+      /* proudly made in the USA band */
+      .usa {
+        background: linear-gradient(
+          90deg,
+          #0a236f 0%,
+          #0c2a82 60%,
+          #0a236f 100%
+        );
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 4px solid var(--red);
+      }
+      .usa::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.035) 0 14px,
+          transparent 14px 28px
+        );
+        pointer-events: none;
+      }
+      .usa-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr) 150px;
+        gap: 32px;
+        align-items: center;
+        padding-block: 36px;
+      }
+      .usa-seal {
+        width: 150px;
+        height: 150px;
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+      }
+      .usa-ba {
+        justify-self: end;
+        width: 120px;
+        height: 120px;
+        filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.4));
+      }
+      .usa h2 {
+        margin-top: 10px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+      }
+      .usa p:not(.eyebrow) {
+        margin-top: 10px;
+        color: #d6dff0;
+        max-width: 46rem;
+        margin-inline: auto;
+      }
+      .usa-copy {
+        text-align: center;
+      }
+      .usa-copy .eyebrow {
+        justify-content: center;
+      }
+      .eyebrow.on-dark {
+        color: #dbe4f2;
+      }
+
+      /* footer */
+      .site-footer {
+        background: var(--ink);
+        color: #c5cdd8;
+      }
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr;
+        gap: 32px;
+        padding-block: 56px 40px;
+      }
+      .foot-logo {
+        display: inline-block;
+        line-height: 0;
+        --lg-navy: #0a236f;
+        --lg-grey: #8887a1;
+        --lg-white: #fff;
+        --lg-word: #fff;
+        --lg-tag: #ffb3b6;
+      }
+      .foot-logo .logo-svg {
+        height: 52px;
+      }
+      .foot-grid .blurb {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        color: #97a2b1;
+        max-width: 22rem;
+      }
+      .site-footer h3 {
+        font-size: 1.15rem;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .site-footer address {
+        font-style: normal;
+        line-height: 1.7;
+        font-variant-numeric: tabular-nums;
+      }
+      .site-footer .mono {
+        color: #8a96a8;
+        display: block;
+        margin-bottom: 10px;
+      }
+      .site-footer a {
+        text-decoration: none;
+      }
+      .site-footer a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+      .foot-certs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+        padding-block: 4px 28px;
+      }
+      .foot-certs img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .foot-certs img.sq {
+        border-radius: 10px;
+        padding: 5px;
+      }
+      .foot-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-block: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 28px;
+        justify-content: space-between;
+        font-size: 0.84rem;
+        color: #97a2b1;
+      }
+      .foot-bottom nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 22px;
+      }
+
+      /* responsive */
+      @media (max-width: 1100px) {
+        .sol-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .foot-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 1020px) {
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .q-grid,
+        .rfq-grid,
+        .head-row,
+        .sol-top {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .head-row {
+          margin-bottom: 32px;
+        }
+        .gal {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 1180px) {
+        .menu-btn {
+          display: inline-flex;
+        }
+        .bar .btn {
+          display: none;
+        }
+        .nav {
+          display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          background: #fff;
+          padding: 8px 16px 20px;
+          border-bottom: 3px solid var(--navy);
+        }
+        .nav a {
+          padding: 14px 0;
+          border-bottom: 1px solid var(--line);
+          color: var(--navy) !important;
+          text-shadow: none !important;
+        }
+        .site-header[data-open="true"] {
+          background: #fff;
+          --lg-word: #0a236f;
+          --lg-tag: #822628;
+          --nav: var(--navy);
+        }
+        .site-header[data-open="true"] .nav {
+          display: flex;
+        }
+      }
+      @media (max-width: 980px) {
+        .materials {
+          grid-template-columns: minmax(0, 1fr) !important;
+        }
+        .wrap {
+          padding-inline: 16px;
+        }
+        .hero-panel .stats-grid,
+        .fcards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .hero-panel .stat:nth-child(3) {
+          border-left: 0;
+        }
+        .hero-panel .stat:nth-child(n + 3) {
+          border-top: 1px solid #d6dbe2;
+        }
+        .about-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .about figure img {
+          aspect-ratio: 494/371;
+          min-height: 0;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .stat:nth-child(3) {
+          border-left: 0;
+        }
+        .stat:nth-child(n + 3) {
+          border-top: 1px solid var(--line);
+        }
+        .materials {
+          grid-template-columns: minmax(0, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .usa-grid {
+          grid-template-columns: minmax(0, 1fr);
+          justify-items: center;
+          gap: 18px;
+        }
+        .usa-seal {
+          width: 110px;
+          height: 110px;
+        }
+        .usa-ba {
+          display: none;
+        }
+        .cards,
+        .creds,
+        .form,
+        .foot-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .sol-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .gal {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 150px;
+        }
+        .gal figcaption,
+        .gal figure.w figcaption {
+          font-size: 0.9rem;
+          padding: 34px 12px 10px;
+        }
+        .gal figure.w {
+          grid-column: span 2;
+        }
+        .logo-svg {
+          height: 44px;
+        }
+        .bar {
+          min-height: 72px;
+        }
+        .hero-inner {
+          padding-top: calc(72px + 40px + env(safe-area-inset-top, 0px));
+          padding-bottom: 24px;
+        }
+        .hero h1 span {
+          white-space: normal;
+          display: inline;
+        }
+        .hero-shade {
+          background: linear-gradient(
+            180deg,
+            rgba(5, 7, 11, 0.88) 0%,
+            rgba(5, 7, 11, 0.72) 50%,
+            rgba(5, 7, 11, 0.1) 72%,
+            rgba(5, 7, 11, 0.45) 100%
+          );
+        }
+        .hero .btns .btn {
+          flex: 1 1 100%;
+        }
+        .inds span {
+          padding-inline: 10px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .rise {
+          animation: none;
+        }
+        .card,
+        .btn,
+        .frame img,
+        .gal img,
+        .card .ph img {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader" data-open="false">
+      <div class="wrap bar">
+        <a class="logo" href="#top" aria-label="Dynamic Products, Inc. home"
+          ><svg
+            class="logo-svg"
+            role="img"
+            aria-label="Dynamic Products, Inc. Fitting Solutions for all your needs"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 172.301 29.256"
+          >
+            <g>
+              <g>
+                <path
+                  class="wm"
+                  d="M27.448,7.031h3.5a6.855,6.855,0,0,1,1.807.181,3.177,3.177,0,0,1,1.432.875A4.152,4.152,0,0,1,35.1,9.626a7.006,7.006,0,0,1,.311,2.245,6.243,6.243,0,0,1-.291,2.021A4.194,4.194,0,0,1,34.1,15.57a3.37,3.37,0,0,1-1.348.758,5.8,5.8,0,0,1-1.7.2H27.448v-9.5Zm1.918,1.607v6.291H30.8a5.221,5.221,0,0,0,1.16-.091,1.771,1.771,0,0,0,.774-0.4,2.012,2.012,0,0,0,.5-0.917,6.2,6.2,0,0,0,.194-1.739,5.681,5.681,0,0,0-.194-1.691,2.178,2.178,0,0,0-.544-0.92A1.829,1.829,0,0,0,31.8,8.728a8.716,8.716,0,0,0-1.575-.091H29.365Z"
+                />
+                <path
+                  class="wm"
+                  d="M36.161,9.648H38.1l1.646,4.885L41.35,9.648h1.885l-2.43,6.621-0.434,1.2a4.9,4.9,0,0,1-.457.92,1.989,1.989,0,0,1-.5.515,2.181,2.181,0,0,1-.693.308,3.6,3.6,0,0,1-.93.11,4.822,4.822,0,0,1-1.03-.11L36.6,17.785a4.026,4.026,0,0,0,.771.084,1.143,1.143,0,0,0,.939-0.373,2.585,2.585,0,0,0,.466-0.949Z"
+                />
+                <path
+                  class="wm"
+                  d="M50.66,16.528H48.84V13.017a5.411,5.411,0,0,0-.117-1.442,1.008,1.008,0,0,0-.379-0.508,1.083,1.083,0,0,0-.632-0.181,1.46,1.46,0,0,0-.849.259,1.3,1.3,0,0,0-.515.687,5.939,5.939,0,0,0-.139,1.581v3.116h-1.82V9.648H46.08v1.011a2.819,2.819,0,0,1,3.369-.949,1.85,1.85,0,0,1,.755.554,2.006,2.006,0,0,1,.356.764,5.675,5.675,0,0,1,.1,1.225v4.276Z"
+                />
+                <path
+                  class="wm"
+                  d="M53.867,11.747l-1.652-.3a2.571,2.571,0,0,1,.958-1.477,3.509,3.509,0,0,1,2.021-.48,4.358,4.358,0,0,1,1.814.288,1.809,1.809,0,0,1,.839.732,3.752,3.752,0,0,1,.243,1.629l-0.02,2.125a7.358,7.358,0,0,0,.088,1.338,3.873,3.873,0,0,0,.327.923h-1.8q-0.071-.181-0.175-0.538c-0.031-.108-0.052-0.179-0.065-0.214a3.283,3.283,0,0,1-1,.68,2.857,2.857,0,0,1-1.134.227,2.344,2.344,0,0,1-1.675-.577,1.916,1.916,0,0,1-.612-1.458,1.959,1.959,0,0,1,.279-1.04,1.82,1.82,0,0,1,.781-0.7,6.112,6.112,0,0,1,1.448-.424,9.881,9.881,0,0,0,1.768-.447V11.857a0.942,0.942,0,0,0-.259-0.748,1.552,1.552,0,0,0-.978-0.224,1.306,1.306,0,0,0-.758.191A1.331,1.331,0,0,0,53.867,11.747ZM56.3,13.224A11.4,11.4,0,0,1,55.2,13.5a3.353,3.353,0,0,0-.991.317,0.76,0.76,0,0,0-.356.642,0.893,0.893,0,0,0,.285.661,1,1,0,0,0,.725.279,1.578,1.578,0,0,0,.939-0.324,1.137,1.137,0,0,0,.434-0.6,3.593,3.593,0,0,0,.072-0.888V13.224Z"
+                />
+                <path
+                  class="wm"
+                  d="M59.75,9.648h1.678v0.939a2.7,2.7,0,0,1,2.144-1.095,2.311,2.311,0,0,1,1.147.272,2.091,2.091,0,0,1,.8.823,3.181,3.181,0,0,1,.978-0.823,2.4,2.4,0,0,1,1.121-.272A2.5,2.5,0,0,1,68.9,9.8a1.887,1.887,0,0,1,.784.9,3.928,3.928,0,0,1,.188,1.425v4.4h-1.82V12.6a2.931,2.931,0,0,0-.188-1.322,0.863,0.863,0,0,0-.778-0.389,1.239,1.239,0,0,0-.719.233,1.291,1.291,0,0,0-.486.683,4.918,4.918,0,0,0-.149,1.422v3.3H63.908V12.758a5.221,5.221,0,0,0-.1-1.3,0.826,0.826,0,0,0-.3-0.434,0.954,0.954,0,0,0-.554-0.142,1.326,1.326,0,0,0-.758.227,1.242,1.242,0,0,0-.483.654,4.866,4.866,0,0,0-.146,1.419v3.343H59.75V9.648Z"
+                />
+                <path
+                  class="wm"
+                  d="M71.683,8.715V7.031H73.5V8.715h-1.82Zm0,7.813V9.648H73.5v6.88h-1.82Z"
+                />
+                <path
+                  class="wm"
+                  d="M81.369,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653A3.2,3.2,0,0,1,78.3,9.493a3.325,3.325,0,0,1,2,.541A3,3,0,0,1,81.369,11.682Z"
+                />
+                <path
+                  class="wm"
+                  d="M86.447,16.528v-9.5h3.077a11.163,11.163,0,0,1,2.28.142,2.492,2.492,0,0,1,1.367.93,2.951,2.951,0,0,1,.55,1.85,3.1,3.1,0,0,1-.317,1.47,2.6,2.6,0,0,1-.807.936,2.778,2.778,0,0,1-.995.45,10.928,10.928,0,0,1-1.989.136h-1.25v3.583H86.447Zm1.918-7.891v2.7h1.05a4.959,4.959,0,0,0,1.516-.149,1.259,1.259,0,0,0,.6-0.466,1.276,1.276,0,0,0,.217-0.739,1.229,1.229,0,0,0-.3-0.855A1.328,1.328,0,0,0,90.672,8.7a9.229,9.229,0,0,0-1.38-.065H88.365Z"
+                />
+                <path
+                  class="wm"
+                  d="M97.027,16.528H95.206V9.648H96.9v0.978a2.944,2.944,0,0,1,.781-0.914,1.439,1.439,0,0,1,.787-0.22,2.312,2.312,0,0,1,1.2.343L99.1,11.423a1.6,1.6,0,0,0-.855-0.3,1.011,1.011,0,0,0-.648.211,1.437,1.437,0,0,0-.418.761,10.824,10.824,0,0,0-.152,2.306v2.125Z"
+                />
+                <path
+                  class="wm"
+                  d="M100.027,12.991a3.722,3.722,0,0,1,.447-1.756,3.069,3.069,0,0,1,1.267-1.3,3.758,3.758,0,0,1,1.83-.447,3.436,3.436,0,0,1,2.559,1.014,3.5,3.5,0,0,1,1,2.562,3.545,3.545,0,0,1-1.008,2.588,3.4,3.4,0,0,1-2.536,1.027,4,4,0,0,1-1.8-.428A2.932,2.932,0,0,1,100.474,15,4.177,4.177,0,0,1,100.027,12.991Zm1.866,0.1a2.278,2.278,0,0,0,.486,1.568,1.588,1.588,0,0,0,2.393,0,2.31,2.31,0,0,0,.483-1.581,2.268,2.268,0,0,0-.483-1.555,1.588,1.588,0,0,0-2.393,0A2.279,2.279,0,0,0,101.893,13.088Z"
+                />
+                <path
+                  class="wm"
+                  d="M114.862,16.528h-1.691V15.518a2.73,2.73,0,0,1-.994.878,2.555,2.555,0,0,1-1.157.288,2.62,2.62,0,0,1-2.031-.956,3.886,3.886,0,0,1-.845-2.666,3.841,3.841,0,0,1,.823-2.659,2.682,2.682,0,0,1,2.08-.91,2.576,2.576,0,0,1,2,.959V7.031h1.82v9.5ZM110,12.939a3.15,3.15,0,0,0,.3,1.594,1.376,1.376,0,0,0,1.231.713,1.34,1.34,0,0,0,1.069-.535,2.466,2.466,0,0,0,.44-1.6,2.7,2.7,0,0,0-.427-1.707,1.405,1.405,0,0,0-2.18-.007A2.325,2.325,0,0,0,110,12.939Z"
+                />
+                <path
+                  class="wm"
+                  d="M121.185,16.528V15.5a2.653,2.653,0,0,1-.988.868,2.771,2.771,0,0,1-1.293.317,2.528,2.528,0,0,1-1.244-.3,1.8,1.8,0,0,1-.8-0.855A3.813,3.813,0,0,1,116.618,14V9.648h1.82V12.81a8.75,8.75,0,0,0,.1,1.778,0.967,0.967,0,0,0,.366.518,1.126,1.126,0,0,0,.674.191,1.433,1.433,0,0,0,.836-0.256,1.3,1.3,0,0,0,.505-0.635,7.377,7.377,0,0,0,.136-1.856v-2.9h1.82v6.88h-1.691Z"
+                />
+                <path
+                  class="wm"
+                  d="M130.761,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653,3.2,3.2,0,0,1,2.436-.949,3.325,3.325,0,0,1,2,.541A3,3,0,0,1,130.761,11.682Z"
+                />
+                <path
+                  class="wm"
+                  d="M135.3,9.648V11.1h-1.244v2.773a6.958,6.958,0,0,0,.035.982,0.4,0.4,0,0,0,.162.23,0.512,0.512,0,0,0,.308.091A2.357,2.357,0,0,0,135.289,15l0.156,1.412a3.624,3.624,0,0,1-1.438.272,2.28,2.28,0,0,1-.888-0.165,1.291,1.291,0,0,1-.58-0.427,1.685,1.685,0,0,1-.256-0.71,8.835,8.835,0,0,1-.058-1.283v-3h-0.836V9.648h0.836V8.281l1.827-1.062v2.43H135.3Z"
+                />
+                <path
+                  class="wm"
+                  d="M135.918,14.565l1.827-.278a1.338,1.338,0,0,0,.473.806,1.6,1.6,0,0,0,1,.275,1.8,1.8,0,0,0,1.063-.259,0.579,0.579,0,0,0,.24-0.486,0.476,0.476,0,0,0-.13-0.343,1.448,1.448,0,0,0-.609-0.24,9.809,9.809,0,0,1-2.792-.888,1.772,1.772,0,0,1-.816-1.548,1.908,1.908,0,0,1,.706-1.5,3.3,3.3,0,0,1,2.19-.609,3.82,3.82,0,0,1,2.1.46,2.354,2.354,0,0,1,.946,1.36l-1.717.317a1.062,1.062,0,0,0-.418-0.615A1.529,1.529,0,0,0,139.1,10.8a1.98,1.98,0,0,0-1.03.2,0.432,0.432,0,0,0-.207.369,0.4,0.4,0,0,0,.182.331,6.824,6.824,0,0,0,1.7.512,5.059,5.059,0,0,1,2.031.81,1.682,1.682,0,0,1,.57,1.354,2.078,2.078,0,0,1-.79,1.626,3.5,3.5,0,0,1-2.339.68,3.837,3.837,0,0,1-2.225-.57A2.625,2.625,0,0,1,135.918,14.565Z"
+                />
+                <path
+                  class="wm"
+                  d="M143.893,14.708h1.82v1.3a4.544,4.544,0,0,1-.136,1.247,1.867,1.867,0,0,1-.515.819,2.648,2.648,0,0,1-.962.57l-0.356-.751a1.535,1.535,0,0,0,.784-0.5,1.5,1.5,0,0,0,.246-0.868h-0.881v-1.82Z"
+                />
+                <path class="wm" d="M151.266,16.528v-9.5h1.918v9.5h-1.918Z" />
+                <path
+                  class="wm"
+                  d="M161.255,16.528h-1.82V13.017a5.411,5.411,0,0,0-.117-1.442,1.008,1.008,0,0,0-.379-0.508,1.083,1.083,0,0,0-.632-0.181,1.46,1.46,0,0,0-.849.259,1.3,1.3,0,0,0-.515.687,5.939,5.939,0,0,0-.139,1.581v3.116h-1.82V9.648h1.691v1.011a2.819,2.819,0,0,1,3.369-.949,1.85,1.85,0,0,1,.755.554,2.006,2.006,0,0,1,.356.764,5.675,5.675,0,0,1,.1,1.225v4.276Z"
+                />
+                <path
+                  class="wm"
+                  d="M169.1,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653,3.2,3.2,0,0,1,2.436-.949,3.325,3.325,0,0,1,2,.541A3,3,0,0,1,169.1,11.682Z"
+                />
+                <path class="wm" d="M170.481,16.528v-1.82h1.82v1.82h-1.82Z" />
+              </g>
+              <path
+                class="tg"
+                d="M26.748,25.926l0.994-4.749h3.323l-0.168.794H28.553l-0.24,1.14h2.3l-0.165.794h-2.3l-0.421,2.021H26.748Zm4.778-3.44h0.93l-0.719,3.44h-0.93ZM31.8,21.178h0.93l-0.175.842h-0.93Zm1.085,2,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.492,4.492,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.472,2.472,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.922,4.922,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.209,0,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.5,4.5,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.471,2.471,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.924,4.924,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.695-.69h0.93L38,25.926h-0.93Zm0.272-1.309h0.93l-0.175.842h-0.93Zm1.584,1.309h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.082,4.082,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.293,4.293,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.453.172,1.194,1.194,0,0,0-.392.454,3.834,3.834,0,0,0-.233.82l-0.295,1.412h-0.93ZM42.9,26.244a1.058,1.058,0,0,1,.01-0.136L43.9,26.25a0.423,0.423,0,0,0,.049.225,0.377,0.377,0,0,0,.157.13,0.68,0.68,0,0,0,.3.053,0.852,0.852,0,0,0,.473-0.117,0.64,0.64,0,0,0,.217-0.292,3.613,3.613,0,0,0,.133-0.551l0.032-.162a1.547,1.547,0,0,1-1,.4,1.07,1.07,0,0,1-.829-0.356A1.5,1.5,0,0,1,43.1,24.54a2.75,2.75,0,0,1,.22-1.111,1.683,1.683,0,0,1,.619-0.764,1.475,1.475,0,0,1,.813-0.259,1.147,1.147,0,0,1,.628.181,1.217,1.217,0,0,1,.444.509l0.13-.609h0.871l-0.6,2.867a9.577,9.577,0,0,1-.246.985,1.731,1.731,0,0,1-.23.47,1.113,1.113,0,0,1-.327.293,1.429,1.429,0,0,1-.466.17,3.085,3.085,0,0,1-.583.052,1.989,1.989,0,0,1-1.1-.249,0.924,0.924,0,0,1-.373-0.829h0Zm1.208-2.368a1.859,1.859,0,0,0-.1.57,0.893,0.893,0,0,0,.177.6,0.559,0.559,0,0,0,.442.206,0.743,0.743,0,0,0,.471-0.185,1.154,1.154,0,0,0,.35-0.525,1.951,1.951,0,0,0,.121-0.658,0.858,0.858,0,0,0-.2-0.59,0.6,0.6,0,0,0-.457-0.224,0.655,0.655,0,0,0-.458.2,1.456,1.456,0,0,0-.345.609h0Zm4.9,0.512,0.93-.049a1.037,1.037,0,0,0,.152.6,1,1,0,0,0,.79.253,1.111,1.111,0,0,0,.693-0.172,0.516,0.516,0,0,0,.214-0.415,0.448,0.448,0,0,0-.175-0.356,3.4,3.4,0,0,0-.675-0.347,6.427,6.427,0,0,1-.807-0.4,1.171,1.171,0,0,1-.4-0.416,1.19,1.19,0,0,1-.146-0.6,1.288,1.288,0,0,1,.434-0.994,1.8,1.8,0,0,1,1.257-.4,1.933,1.933,0,0,1,1.294.392,1.444,1.444,0,0,1,.5,1.043l-0.936.042a0.762,0.762,0,0,0-.246-0.522,0.93,0.93,0,0,0-.622-0.181,0.917,0.917,0,0,0-.578.143,0.446,0.446,0,0,0-.173.36,0.42,0.42,0,0,0,.159.337,3.253,3.253,0,0,0,.7.373,3.923,3.923,0,0,1,1.043.573,1.11,1.11,0,0,1,.334.832,1.391,1.391,0,0,1-.5,1.074,2,2,0,0,1-1.385.445,2.527,2.527,0,0,1-1.061-.206,1.263,1.263,0,0,1-.633-0.572A1.737,1.737,0,0,1,49.013,24.388Zm4.405,0.11a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,53.419,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm1.629,0.965,0.994-4.749h0.926l-0.991,4.749h-0.93Zm2.562-3.44h0.93L60.4,24.524a3.2,3.2,0,0,0-.078.457,0.344,0.344,0,0,0,.11.256,0.388,0.388,0,0,0,.282.107,0.661,0.661,0,0,0,.243-0.047,1.044,1.044,0,0,0,.246-0.143,1.316,1.316,0,0,0,.227-0.219,1.394,1.394,0,0,0,.188-0.324,3.065,3.065,0,0,0,.133-0.486l0.343-1.639h0.93L62.3,25.926H61.432l0.1-.466a1.762,1.762,0,0,1-1.241.547,0.9,0.9,0,0,1-.667-0.243,0.88,0.88,0,0,1-.243-0.651,4.414,4.414,0,0,1,.11-0.709Zm3.573,0.69,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.5,4.5,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.471,2.471,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.923,4.923,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.695-.69h0.93l-0.719,3.44h-0.93Zm0.272-1.309h0.93l-0.175.842h-0.93Zm0.988,3.32a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,67.418,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.368-2.475h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.082,4.082,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.294,4.294,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.454.172,1.194,1.194,0,0,0-.392.454,3.834,3.834,0,0,0-.233.82l-0.295,1.412h-0.93Zm3.2,2.478,0.9-.143a0.734,0.734,0,0,0,.784.522,0.831,0.831,0,0,0,.509-0.143,0.286,0.286,0,0,0,.133-0.236,0.243,0.243,0,0,0-.068-0.168,1.179,1.179,0,0,0-.385-0.175A4.171,4.171,0,0,1,76.1,24.18a0.807,0.807,0,0,1-.314-0.661,0.945,0.945,0,0,1,.3-0.7,1.743,1.743,0,0,1,1.26-.411,1.723,1.723,0,0,1,1,.243,1.059,1.059,0,0,1,.431.658l-0.858.149a0.53,0.53,0,0,0-.22-0.282,0.941,0.941,0,0,0-.5-0.126,0.7,0.7,0,0,0-.419.1,0.279,0.279,0,0,0-.128.224,0.249,0.249,0,0,0,.13.214,3.038,3.038,0,0,0,.522.181,2.764,2.764,0,0,1,.91.389,0.816,0.816,0,0,1,.324.648,1.1,1.1,0,0,1-.411.849,1.706,1.706,0,0,1-1.16.36,2.051,2.051,0,0,1-1.152-.274A1.356,1.356,0,0,1,75.266,24.964Zm4.347,0.065h0.92l-0.188.9h-0.92Zm2.148,0h0.92l-0.188.9h-0.92Zm2.151,0h0.917l-0.188.9H83.724Zm4.195-2.543-0.143.68H87.306l-0.577,2.76H85.8l0.577-2.76H85.858L86,22.486h0.518l0.075-.353a2.545,2.545,0,0,1,.172-0.586,0.8,0.8,0,0,1,.329-0.329,1.173,1.173,0,0,1,.572-0.121,2.884,2.884,0,0,1,.9.155l-0.181.664a1.776,1.776,0,0,0-.541-0.113,0.28,0.28,0,0,0-.236.1,0.983,0.983,0,0,0-.107.34l-0.052.243h0.658ZM88.055,24.5a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.809,1.809,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.637,1.637,0,0,1,88.055,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.3-2.475h0.868l-0.139.667a1.33,1.33,0,0,1,1.053-.748,1.082,1.082,0,0,1,.431.1l-0.356.761a0.79,0.79,0,0,0-.269-0.045,0.826,0.826,0,0,0-.487.181,1.216,1.216,0,0,0-.387.484,4.818,4.818,0,0,0-.275.96l-0.227,1.079h-0.93Zm5.07,0.975L96.8,23.384a1.365,1.365,0,0,1,.543-0.719,1.814,1.814,0,0,1,1.025-.259,1.5,1.5,0,0,1,.981.267,0.823,0.823,0,0,1,.317.653,2.132,2.132,0,0,1-.028.33q-0.028.175-.193,0.92a4.722,4.722,0,0,0-.136.862,1.775,1.775,0,0,0,.078.489h-0.9a1.782,1.782,0,0,1-.068-0.389,1.425,1.425,0,0,1-.47.348,1.275,1.275,0,0,1-.534.121,0.954,0.954,0,0,1-.706-0.28,0.978,0.978,0,0,1-.279-0.721,1.042,1.042,0,0,1,.306-0.787,1.782,1.782,0,0,1,1.093-.356,4.341,4.341,0,0,0,.888-0.133,1.148,1.148,0,0,0,.058-0.311,0.313,0.313,0,0,0-.12-0.249,0.544,0.544,0,0,0-.356-0.1,0.67,0.67,0,0,0-.394.1A0.507,0.507,0,0,0,97.707,23.461Zm0.884,0.862a1.909,1.909,0,0,1-.224.042,2.125,2.125,0,0,0-.913.246,0.375,0.375,0,0,0-.152.314,0.364,0.364,0,0,0,.117.274,0.426,0.426,0,0,0,.308.112,0.814,0.814,0,0,0,.4-0.1,0.7,0.7,0,0,0,.279-0.262,1.793,1.793,0,0,0,.164-0.5Zm1.487,1.6,0.994-4.749H102l-0.991,4.749h-0.93Zm1.843,0,0.994-4.749h0.926l-0.991,4.749h-0.93Zm3.981-3.44h0.926l0.233,1.714q0.087,0.661.1,0.926a7.421,7.421,0,0,1,.5-1.114l0.823-1.526h0.985l-2.125,3.777a5.267,5.267,0,0,1-.413.658,1.088,1.088,0,0,1-.363.295,1.123,1.123,0,0,1-.51.107,2.485,2.485,0,0,1-.664-0.1l0.081-.693a1.178,1.178,0,0,0,.327.049,0.842,0.842,0,0,0,.7-0.648ZM109.44,24.5a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,109.44,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.348-2.475H115l-0.424,2.037a3.2,3.2,0,0,0-.078.457,0.344,0.344,0,0,0,.11.256,0.388,0.388,0,0,0,.282.107,0.661,0.661,0,0,0,.243-0.047,1.044,1.044,0,0,0,.246-0.143,1.315,1.315,0,0,0,.227-0.219,1.394,1.394,0,0,0,.188-0.324,3.063,3.063,0,0,0,.133-0.486l0.343-1.639h0.93l-0.719,3.44H115.61l0.1-.466a1.762,1.762,0,0,1-1.241.547,0.9,0.9,0,0,1-.667-0.243,0.88,0.88,0,0,1-.243-0.651,4.415,4.415,0,0,1,.11-0.709Zm4.007,0h0.868l-0.139.667a1.33,1.33,0,0,1,1.053-.748,1.082,1.082,0,0,1,.431.1l-0.356.761a0.79,0.79,0,0,0-.269-0.045,0.827,0.827,0,0,0-.488.181,1.216,1.216,0,0,0-.387.484,4.816,4.816,0,0,0-.275.96l-0.227,1.079h-0.93Zm4.49,0h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.083,4.083,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.3,4.3,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.454.172,1.194,1.194,0,0,0-.392.454,3.832,3.832,0,0,0-.233.82l-0.295,1.412h-0.93Zm6.734,1.4a2.593,2.593,0,0,1-.065.606H126.9q0,0.055,0,.084a0.78,0.78,0,0,0,.2.554,0.628,0.628,0,0,0,.478.211,0.8,0.8,0,0,0,.722-0.479L129.127,25a1.751,1.751,0,0,1-.649.753,1.7,1.7,0,0,1-.912.251,1.516,1.516,0,0,1-1.127-.439A1.579,1.579,0,0,1,126,24.407a2.113,2.113,0,0,1,.392-1.257,1.765,1.765,0,0,1,1.526-.745,1.323,1.323,0,0,1,1,.39,1.52,1.52,0,0,1,.373,1.093h0Zm-0.849.039q0-.062,0-0.094a0.835,0.835,0,0,0-.172-0.573,0.588,0.588,0,0,0-.46-0.191,0.731,0.731,0,0,0-.517.217,1.157,1.157,0,0,0-.309.641h1.454Zm4.539-.039a2.592,2.592,0,0,1-.065.606h-2.332q0,0.055,0,.084a0.78,0.78,0,0,0,.2.554,0.628,0.628,0,0,0,.478.211,0.8,0.8,0,0,0,.722-0.479L132.817,25a1.751,1.751,0,0,1-.649.753,1.7,1.7,0,0,1-.912.251,1.516,1.516,0,0,1-1.127-.439,1.579,1.579,0,0,1-.434-1.161,2.113,2.113,0,0,1,.392-1.257,1.765,1.765,0,0,1,1.526-.745,1.323,1.323,0,0,1,1,.39,1.52,1.52,0,0,1,.373,1.093h0Zm-0.849.039q0-.062,0-0.094a0.835,0.835,0,0,0-.172-0.573,0.588,0.588,0,0,0-.46-0.191,0.731,0.731,0,0,0-.517.217,1.158,1.158,0,0,0-.309.641h1.454Zm4.3,2h-0.881l0.078-.373a1.708,1.708,0,0,1-.5.348,1.385,1.385,0,0,1-.552.105,1.117,1.117,0,0,1-.867-0.364,1.55,1.55,0,0,1-.332-1.077,2.546,2.546,0,0,1,.466-1.493,1.439,1.439,0,0,1,1.234-.667,1.148,1.148,0,0,1,1.04.551l0.373-1.778h0.93Zm-2.148-1.4a0.832,0.832,0,0,0,.186.577,0.592,0.592,0,0,0,.458.207,0.744,0.744,0,0,0,.471-0.173,1.173,1.173,0,0,0,.35-0.53,1.976,1.976,0,0,0,.131-0.683,0.883,0.883,0,0,0-.2-0.6,0.6,0.6,0,0,0-.463-0.23,0.769,0.769,0,0,0-.671.454A1.927,1.927,0,0,0,134.295,24.527Zm2.9,0.437,0.9-.143a0.734,0.734,0,0,0,.784.522,0.831,0.831,0,0,0,.509-0.143,0.286,0.286,0,0,0,.133-0.236,0.243,0.243,0,0,0-.068-0.168,1.179,1.179,0,0,0-.385-0.175,4.171,4.171,0,0,1-1.043-.441,0.807,0.807,0,0,1-.314-0.661,0.945,0.945,0,0,1,.3-0.7,1.743,1.743,0,0,1,1.26-.411,1.723,1.723,0,0,1,1,.243,1.059,1.059,0,0,1,.431.658l-0.858.149a0.53,0.53,0,0,0-.22-0.282,0.941,0.941,0,0,0-.5-0.126,0.7,0.7,0,0,0-.419.1,0.278,0.278,0,0,0-.128.224,0.249,0.249,0,0,0,.13.214,3.039,3.039,0,0,0,.522.181,2.764,2.764,0,0,1,.91.389,0.816,0.816,0,0,1,.324.648,1.1,1.1,0,0,1-.411.849,1.706,1.706,0,0,1-1.16.36,2.051,2.051,0,0,1-1.152-.274A1.356,1.356,0,0,1,137.2,24.964Z"
+              />
+              <g>
+                <rect
+                  class="cls-1"
+                  width="22.459"
+                  height="29.256"
+                  rx="5.139"
+                  ry="5.139"
+                />
+                <path
+                  class="cls-3"
+                  d="M17.355,1.294H5.1A3.854,3.854,0,0,0,1.25,5.149V24.107A3.854,3.854,0,0,0,5.1,27.961h12.25a3.854,3.854,0,0,0,3.854-3.854V5.149A3.854,3.854,0,0,0,17.355,1.294Zm1.708,22.583a1.854,1.854,0,0,1-1.854,1.854H5.25A1.854,1.854,0,0,1,3.4,23.878V5.378A1.854,1.854,0,0,1,5.25,3.524H17.209a1.854,1.854,0,0,1,1.854,1.854v18.5Z"
+                />
+                <rect
+                  class="cls-4"
+                  x="7.402"
+                  y="5.118"
+                  width="2.133"
+                  height="5.986"
+                />
+                <rect
+                  class="cls-4"
+                  x="9.829"
+                  y="10.999"
+                  width="2.133"
+                  height="5.795"
+                />
+                <path
+                  class="cls-1"
+                  d="M12.371,8.163a2.917,2.917,0,0,0-2.69,1.758,2.865,2.865,0,1,0,0,2.212A2.9,2.9,0,1,0,12.371,8.163Z"
+                />
+                <ellipse
+                  class="cls-4"
+                  cx="6.992"
+                  cy="11.027"
+                  rx="2.542"
+                  ry="2.5"
+                />
+                <ellipse
+                  class="cls-3"
+                  cx="6.992"
+                  cy="11.027"
+                  rx="2.269"
+                  ry="2.205"
+                />
+                <ellipse
+                  class="cls-4"
+                  cx="12.371"
+                  cy="11.027"
+                  rx="2.542"
+                  ry="2.5"
+                />
+                <ellipse
+                  class="cls-3"
+                  cx="12.371"
+                  cy="11.027"
+                  rx="2.269"
+                  ry="2.205"
+                />
+                <g>
+                  <path
+                    class="cls-4"
+                    d="M4.524,16.778H5.178a1.288,1.288,0,0,1,.337.033,0.594,0.594,0,0,1,.267.16,0.754,0.754,0,0,1,.169.282,1.265,1.265,0,0,1,.058.411,1.128,1.128,0,0,1-.054.371,0.764,0.764,0,0,1-.189.308,0.63,0.63,0,0,1-.251.139,1.1,1.1,0,0,1-.316.037H4.524V16.778Zm0.357,0.294v1.153H5.148a0.982,0.982,0,0,0,.216-0.017,0.331,0.331,0,0,0,.145-0.072A0.369,0.369,0,0,0,5.6,17.969a1.111,1.111,0,0,0,.036-0.319A1.017,1.017,0,0,0,5.6,17.34a0.391,0.391,0,0,0-.1-0.168,0.339,0.339,0,0,0-.165-0.082,1.639,1.639,0,0,0-.293-0.017H4.882Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M6.148,17.258H6.509l0.307,0.9,0.3-.9H7.467L7.014,18.472l-0.081.22a0.9,0.9,0,0,1-.085.168,0.372,0.372,0,0,1-.093.094,0.412,0.412,0,0,1-.129.057,0.7,0.7,0,0,1-.173.02,0.927,0.927,0,0,1-.192-0.02l-0.03-.261a0.765,0.765,0,0,0,.144.015A0.215,0.215,0,0,0,6.549,18.7a0.482,0.482,0,0,0,.087-0.174Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M8.85,18.519H8.511V17.875a0.975,0.975,0,0,0-.021-0.264,0.185,0.185,0,0,0-.071-0.093A0.2,0.2,0,0,0,8.3,17.485a0.276,0.276,0,0,0-.158.047,0.24,0.24,0,0,0-.1.126,1.055,1.055,0,0,0-.026.29v0.571H7.682V17.258H8v0.186a0.532,0.532,0,0,1,.628-0.174,0.347,0.347,0,0,1,.141.1,0.372,0.372,0,0,1,.066.14,1.045,1.045,0,0,1,.019.225v0.784Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M9.448,17.643L9.14,17.588a0.472,0.472,0,0,1,.179-0.271A0.662,0.662,0,0,1,9.7,17.229a0.825,0.825,0,0,1,.338.053,0.335,0.335,0,0,1,.156.134,0.677,0.677,0,0,1,.045.3l0,0.389a1.341,1.341,0,0,0,.016.245,0.7,0.7,0,0,0,.061.169H9.973c-0.009-.022-0.02-0.055-0.032-0.1l-0.012-.039a0.613,0.613,0,0,1-.186.125,0.537,0.537,0,0,1-.211.042,0.442,0.442,0,0,1-.312-0.105,0.348,0.348,0,0,1-.114-0.267,0.355,0.355,0,0,1,.052-0.191A0.338,0.338,0,0,1,9.3,17.856a1.162,1.162,0,0,1,.27-0.078A1.892,1.892,0,0,0,9.9,17.7V17.663a0.171,0.171,0,0,0-.048-0.137,0.294,0.294,0,0,0-.183-0.041,0.249,0.249,0,0,0-.141.035A0.245,0.245,0,0,0,9.448,17.643ZM9.9,17.914a2.115,2.115,0,0,1-.207.051,0.658,0.658,0,0,0-.185.058,0.14,0.14,0,0,0-.066.118,0.163,0.163,0,0,0,.053.121,0.187,0.187,0,0,0,.135.051,0.3,0.3,0,0,0,.175-0.06,0.207,0.207,0,0,0,.081-0.11A0.643,0.643,0,0,0,9.9,17.98V17.914Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M10.545,17.258h0.313V17.43a0.506,0.506,0,0,1,.4-0.2,0.435,0.435,0,0,1,.213.05,0.384,0.384,0,0,1,.148.151,0.59,0.59,0,0,1,.183-0.151,0.453,0.453,0,0,1,.209-0.05,0.471,0.471,0,0,1,.239.056,0.345,0.345,0,0,1,.146.166,0.7,0.7,0,0,1,.035.261v0.806H12.091V17.8a0.535,0.535,0,0,0-.035-0.242,0.162,0.162,0,0,0-.145-0.071,0.235,0.235,0,0,0-.134.042,0.24,0.24,0,0,0-.09.125,0.885,0.885,0,0,0-.028.261v0.605H11.32V17.828A0.939,0.939,0,0,0,11.3,17.59a0.153,0.153,0,0,0-.056-0.08,0.182,0.182,0,0,0-.1-0.026,0.25,0.25,0,0,0-.142.042,0.229,0.229,0,0,0-.09.12,0.879,0.879,0,0,0-.027.26v0.613H10.545V17.258Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M12.769,17.087V16.778h0.339v0.309H12.769Zm0,1.432V17.258h0.339v1.261H12.769Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M14.574,17.631l-0.334.059a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186l0.333,0.056a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97A0.6,0.6,0,0,1,14,17.229a0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,14.574,17.631Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M4.525,20.969V19.228H5.1a2.144,2.144,0,0,1,.425.026,0.466,0.466,0,0,1,.255.17,0.535,0.535,0,0,1,.1.339,0.561,0.561,0,0,1-.059.27,0.478,0.478,0,0,1-.15.171,0.526,0.526,0,0,1-.185.083,2.078,2.078,0,0,1-.371.025H4.883v0.657H4.525Zm0.357-1.446v0.494h0.2a0.948,0.948,0,0,0,.283-0.027A0.235,0.235,0,0,0,5.473,19.9a0.227,0.227,0,0,0,.041-0.135,0.225,0.225,0,0,0-.057-0.157,0.25,0.25,0,0,0-.144-0.077,1.774,1.774,0,0,0-.257-0.012H4.883Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M6.5,20.969H6.158V19.708H6.473v0.179a0.546,0.546,0,0,1,.146-0.167,0.268,0.268,0,0,1,.147-0.041,0.436,0.436,0,0,1,.223.063l-0.1.291a0.3,0.3,0,0,0-.159-0.055,0.19,0.19,0,0,0-.121.039,0.264,0.264,0,0,0-.078.14,1.937,1.937,0,0,0-.028.422v0.39Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M7.057,20.321A0.676,0.676,0,0,1,7.14,20a0.568,0.568,0,0,1,.236-0.237,0.708,0.708,0,0,1,.341-0.082,0.647,0.647,0,0,1,.477.186A0.661,0.661,0,0,1,7.719,21a0.754,0.754,0,0,1-.336-0.078,0.542,0.542,0,0,1-.244-0.23A0.758,0.758,0,0,1,7.057,20.321ZM7.4,20.339a0.414,0.414,0,0,0,.09.287,0.3,0.3,0,0,0,.446,0,0.418,0.418,0,0,0,.09-0.29,0.411,0.411,0,0,0-.09-0.285,0.3,0.3,0,0,0-.446,0A0.414,0.414,0,0,0,7.4,20.339Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M9.821,20.969H9.506V20.784a0.511,0.511,0,0,1-.186.161A0.483,0.483,0,0,1,9.105,21a0.493,0.493,0,0,1-.379-0.175,0.705,0.705,0,0,1-.157-0.489,0.694,0.694,0,0,1,.153-0.487A0.5,0.5,0,0,1,9.11,19.68a0.483,0.483,0,0,1,.372.176V19.228H9.821v1.741Zm-0.906-.658a0.566,0.566,0,0,0,.057.292,0.257,0.257,0,0,0,.229.13,0.25,0.25,0,0,0,.2-0.1,0.445,0.445,0,0,0,.083-0.293A0.489,0.489,0,0,0,9.4,20.03a0.253,0.253,0,0,0-.2-0.1,0.257,0.257,0,0,0-.2.094A0.423,0.423,0,0,0,8.915,20.311Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M11,20.969V20.78a0.49,0.49,0,0,1-.184.159,0.52,0.52,0,0,1-.241.058,0.478,0.478,0,0,1-.232-0.056,0.33,0.33,0,0,1-.148-0.157,0.685,0.685,0,0,1-.046-0.279v-0.8h0.339v0.58a1.573,1.573,0,0,0,.019.326,0.175,0.175,0,0,0,.068.095,0.211,0.211,0,0,0,.125.035,0.271,0.271,0,0,0,.156-0.047,0.242,0.242,0,0,0,.094-0.116,1.347,1.347,0,0,0,.025-0.34V19.708h0.339v1.261H11Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M12.784,20.081l-0.334.059a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186L12.8,20.541a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97,0.6,0.6,0,0,1,.454-0.174,0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,12.784,20.081Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M13.629,19.708v0.266H13.4v0.508a1.156,1.156,0,0,0,.007.18,0.074,0.074,0,0,0,.03.042,0.1,0.1,0,0,0,.058.017,0.443,0.443,0,0,0,.136-0.032l0.029,0.259a0.687,0.687,0,0,1-.268.05,0.424,0.424,0,0,1-.166-0.03,0.237,0.237,0,0,1-.108-0.078,0.308,0.308,0,0,1-.048-0.13,1.59,1.59,0,0,1-.011-0.235v-0.55H12.9V19.708h0.156v-0.25l0.34-.195v0.445h0.232Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M13.745,20.609l0.34-.051a0.245,0.245,0,0,0,.088.147,0.3,0.3,0,0,0,.186.051,0.34,0.34,0,0,0,.2-0.048A0.1,0.1,0,0,0,14.6,20.62a0.087,0.087,0,0,0-.024-0.063,0.28,0.28,0,0,0-.114-0.044,1.85,1.85,0,0,1-.52-0.163,0.323,0.323,0,0,1-.152-0.284,0.348,0.348,0,0,1,.132-0.276,0.622,0.622,0,0,1,.408-0.111,0.719,0.719,0,0,1,.392.084,0.432,0.432,0,0,1,.176.249l-0.32.058a0.2,0.2,0,0,0-.078-0.113,0.29,0.29,0,0,0-.164-0.039,0.375,0.375,0,0,0-.192.037,0.079,0.079,0,0,0-.039.068,0.073,0.073,0,0,0,.034.061,1.255,1.255,0,0,0,.317.094,0.955,0.955,0,0,1,.378.148,0.307,0.307,0,0,1,.106.249,0.379,0.379,0,0,1-.147.3A0.661,0.661,0,0,1,14.36,21a0.723,0.723,0,0,1-.415-0.1A0.478,0.478,0,0,1,13.745,20.609Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M4.515,23.419V21.678H4.872v1.741H4.515Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M6.376,23.419H6.037V22.775a0.975,0.975,0,0,0-.021-0.264,0.185,0.185,0,0,0-.071-0.093,0.2,0.2,0,0,0-.118-0.033,0.276,0.276,0,0,0-.158.047,0.24,0.24,0,0,0-.1.126,1.055,1.055,0,0,0-.026.29v0.571H5.208V22.158H5.523v0.186a0.532,0.532,0,0,1,.628-0.174,0.347,0.347,0,0,1,.141.1,0.372,0.372,0,0,1,.066.14,1.045,1.045,0,0,1,.019.225v0.784Z"
+                  />
+                  <path
+                    class="cls-4"
+                    d="M7.838,22.531L7.5,22.59a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186l0.333,0.056a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97,0.6,0.6,0,0,1,.454-0.174,0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,7.838,22.531Z"
+                  />
+                  <path class="cls-4" d="M8.1,23.419V23.085H8.435v0.333H8.1Z" />
+                </g>
+                <circle class="cls-4" cx="16.339" cy="6.473" r="1.066" />
+                <circle class="cls-3" cx="16.339" cy="6.473" r="0.78" />
+                <g>
+                  <rect
+                    class="cls-1"
+                    x="4.084"
+                    y="2.096"
+                    width="2.775"
+                    height="0.471"
+                    transform="translate(3.14 7.802) rotate(-90)"
+                  />
+                  <rect
+                    class="cls-1"
+                    x="15.804"
+                    y="2.096"
+                    width="2.775"
+                    height="0.471"
+                    transform="translate(14.86 19.522) rotate(-90)"
+                  />
+                </g>
+                <g>
+                  <rect
+                    class="cls-1"
+                    x="4.084"
+                    y="26.679"
+                    width="2.775"
+                    height="0.471"
+                    transform="translate(-21.444 32.386) rotate(-90)"
+                  />
+                  <rect
+                    class="cls-1"
+                    x="15.804"
+                    y="26.679"
+                    width="2.775"
+                    height="0.471"
+                    transform="translate(-9.723 44.106) rotate(-90)"
+                  />
+                </g>
+                <g>
+                  <rect
+                    class="cls-1"
+                    x="1.005"
+                    y="5.19"
+                    width="2.775"
+                    height="0.471"
+                  />
+                  <rect
+                    class="cls-1"
+                    x="18.75"
+                    y="5.19"
+                    width="2.775"
+                    height="0.471"
+                  />
+                </g>
+                <g>
+                  <rect
+                    class="cls-1"
+                    x="1.005"
+                    y="23.415"
+                    width="2.775"
+                    height="0.471"
+                  />
+                  <rect
+                    class="cls-1"
+                    x="18.75"
+                    y="23.415"
+                    width="2.775"
+                    height="0.471"
+                  />
+                </g>
+                <rect
+                  class="cls-4"
+                  x="15.17"
+                  y="8.444"
+                  width="2.339"
+                  height="5.084"
+                />
+              </g>
+            </g>
+          </svg>
+        </a>
+        <nav class="nav" id="siteNav" aria-label="Primary">
+          <a href="#products">Products</a>
+          <a href="#solutions">Fitting Solutions</a>
+          <a href="#quality">Quality</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Careers</a>
+          <a href="#rfq">Contact</a>
+        </nav>
+        <a class="btn btn-red" href="#rfq">Request a Quote</a>
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="siteNav"
+          aria-label="Open menu"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="square"
+          >
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top" aria-label="Dynamic Products, Inc.">
+        <div
+          class="hero-bg"
+          role="img"
+          aria-label="A 60 inch induction pipe bend hanging from an overhead crane in a fabrication hall while a welder works in the background"
+        ></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="wrap">
+            <div class="hero-copy">
+              <p class="eyebrow rise">
+                Houston, Texas &middot; ISO 9001:2015 certified
+              </p>
+              <h1 class="rise d1">
+                <span>Fitting solutions for</span>
+                <span>demanding industries</span>
+              </h1>
+              <p class="lede rise d2">
+                Manufacturer of butt-weld pipe fittings and induction pipe bends
+                engineered for critical, high-performance applications across
+                the United States and Canada.
+              </p>
+              <div class="btns rise d3">
+                <a class="btn btn-red" href="#products">Explore Products</a>
+                <a class="btn btn-line" href="#rfq">Request a Quote</a>
+              </div>
+            </div>
+            <div class="hero-panel rise d3" id="heroPanel">
+              <div class="stats-grid" aria-label="Company at a glance">
+                <div class="stat">
+                  <b>50+</b><strong>Years</strong
+                  ><span>Of manufacturing excellence</span>
+                </div>
+                <div class="stat">
+                  <b>Up to 92&quot;</b><strong>Diameters</strong
+                  ><span>Butt-weld fittings &amp; bends</span>
+                </div>
+                <div class="stat">
+                  <b>100%</b><strong>In house</strong
+                  ><span>Traceable from start to finish</span>
+                </div>
+                <div class="stat">
+                  <b>ISO</b><strong>9001:2015</strong
+                  ><span>Certified &amp; compliant</span>
+                </div>
+              </div>
+              <div class="fcards">
+                <a class="fcard" href="#products"
+                  ><img
+                    data-fitting="elbow"
+                    src="images/current-site/dp_home_img_5325.jpg"
+                    alt="90 degree long radius butt-weld elbow"
+                    width="640"
+                    height="340"
+                  /><b>90&deg; Elbows</b
+                  ><small>ASME B16.9 &middot; MSS SP-75</small></a
+                >
+                <a class="fcard" href="#products"
+                  ><img
+                    data-fitting="tee"
+                    src="images/current-site/dp_home_img_4725-1024x576.jpg"
+                    alt="Butt-weld tee"
+                    width="640"
+                    height="340"
+                  /><b>Tees</b><small>ASME B16.9 &middot; MSS SP-75</small></a
+                >
+                <a class="fcard" href="#products"
+                  ><img
+                    data-fitting="reducer"
+                    src="images/current-site/dp_home_0141.jpg"
+                    alt="Concentric butt-weld reducer"
+                    width="640"
+                    height="340"
+                  /><b>Reducers</b
+                  ><small>ASME B16.9 &middot; MSS SP-75</small></a
+                >
+                <a class="fcard" href="#products"
+                  ><img
+                    data-fitting="bend"
+                    src="images/current-site/dp_home_mvc-028s.jpg"
+                    alt="Induction pipe bend"
+                    width="640"
+                    height="340"
+                  /><b>Induction Bends</b
+                  ><small>ASME B16.49 &middot; Custom radius</small></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="usa" aria-label="Proudly made in the USA">
+        <div class="wrap usa-grid">
+          <img
+            class="usa-seal"
+            src="images/certs/made-in-usa.png"
+            alt="Proudly Made in USA seal"
+            width="150"
+            height="150"
+          />
+          <div class="usa-copy">
+            <p class="eyebrow on-dark">Houston, Texas &middot; Since 1969</p>
+            <h2>Proudly made in the USA</h2>
+            <p>
+              Every fitting is formed, heat treated, tested, and shipped from
+              our two plants in Houston. Buy America compliant, with 100% US
+              melt and manufacture.
+            </p>
+          </div>
+          <img
+            class="usa-ba"
+            src="images/certs/buy-america.png"
+            alt="Build America Buy America compliant"
+            width="120"
+            height="120"
+          />
+        </div>
+      </section>
+
+      <section class="section products" id="products">
+        <div class="wrap">
+          <div class="head-row">
+            <div>
+              <p class="eyebrow">Products</p>
+              <h2>Butt-weld fittings and induction pipe bends</h2>
+            </div>
+            <p>
+              Seamless and welded, up to 4&quot; wall, in carbon steel, high
+              yield, low temperature, chrome moly, stainless, duplex, and nickel
+              alloys. Eleven product types, each with its own page and full
+              range.
+            </p>
+          </div>
+
+          <div class="cards">
+            <a class="card" href="#range">
+              <div class="ph">
+                <img
+                  src="images/current-site/dp_home_img_5325.jpg"
+                  alt="Segmented butt-weld elbow"
+                />
+              </div>
+              <div class="txt">
+                <h3>Butt-Weld Elbows</h3>
+                <dl>
+                  <dt>Design</dt>
+                  <dd>
+                    LR &amp; SR 45&deg;, 90&deg;, 180&deg;, special angles
+                  </dd>
+                  <dt>Size</dt>
+                  <dd>Up to 92&quot; OD</dd>
+                  <dt>Also</dt>
+                  <dd>3R, 5R segmentable, reducing LR 90&deg;</dd>
+                </dl>
+                <span class="go"
+                  >View elbows <span aria-hidden="true">&rarr;</span></span
+                >
+              </div>
+            </a>
+            <a class="card" href="#range">
+              <div class="ph">
+                <img
+                  src="images/current-site/dp_home_mvc-028s.jpg"
+                  alt="180 degree induction pipe bend in the shop"
+                />
+              </div>
+              <div class="txt">
+                <h3>Induction Pipe Bends</h3>
+                <dl>
+                  <dt>Design</dt>
+                  <dd>3D, 5D, 10D &middot; 45&deg;, 90&deg;, special angles</dd>
+                  <dt>Size</dt>
+                  <dd>Up to 60&quot; OD</dd>
+                  <dt>Wall</dt>
+                  <dd>Up to 4&quot;</dd>
+                </dl>
+                <span class="go"
+                  >View induction bends
+                  <span aria-hidden="true">&rarr;</span></span
+                >
+              </div>
+            </a>
+            <a class="card" href="#range">
+              <div class="ph">
+                <img
+                  src="images/current-site/dp_home_img_4725-1024x576.jpg"
+                  alt="Pair of butt-weld tees on a crate"
+                />
+              </div>
+              <div class="txt">
+                <h3>Butt-Weld Tees</h3>
+                <dl>
+                  <dt>Design</dt>
+                  <dd>Straight, reducing, barred, flow</dd>
+                  <dt>Size</dt>
+                  <dd>Up to 72&quot; OD</dd>
+                  <dt>Wall</dt>
+                  <dd>Up to 4&quot;</dd>
+                </dl>
+                <span class="go"
+                  >View tees <span aria-hidden="true">&rarr;</span></span
+                >
+              </div>
+            </a>
+            <a class="card" href="#range">
+              <div class="ph">
+                <img
+                  src="images/current-site/dp_home_0141.jpg"
+                  alt="Eccentric reducers on pallets"
+                />
+              </div>
+              <div class="txt">
+                <h3>Butt-Weld Reducers</h3>
+                <dl>
+                  <dt>Design</dt>
+                  <dd>Concentric, eccentric</dd>
+                  <dt>Size</dt>
+                  <dd>Up to 72&quot; OD</dd>
+                  <dt>Wall</dt>
+                  <dd>Up to 4&quot;</dd>
+                </dl>
+                <span class="go"
+                  >View reducers <span aria-hidden="true">&rarr;</span></span
+                >
+              </div>
+            </a>
+          </div>
+
+          <div class="types" aria-label="Browse by fitting type">
+            <span class="mono">Browse by fitting type</span>
+            <a class="chip" href="#range">LR Elbow</a>
+            <a class="chip" href="#range">SR Elbow</a>
+            <a class="chip" href="#range">3R Elbow</a>
+            <a class="chip" href="#range">5R Elbow</a>
+            <a class="chip" href="#range">Reducing Elbow</a>
+            <a class="chip" href="#range">Induction Bends</a>
+            <a class="chip" href="#range">Tees</a>
+            <a class="chip" href="#range">Concentric Reducers</a>
+            <a class="chip" href="#range">Eccentric Reducers</a>
+            <a class="chip" href="#range">Caps</a>
+            <a class="chip" href="#range">Crosses</a>
+            <a class="chip" href="#range">Laterals</a>
+            <a class="chip" href="#range">Wyes</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section range" id="range">
+        <div class="wrap">
+          <div class="head-row">
+            <div>
+              <p class="eyebrow">Manufacturing range</p>
+              <h2>Products SPECS.</h2>
+            </div>
+            <p>
+              Eleven product types, all to ASME B16.9 and MSS SP-75 dimensions.
+              On the new site each row links to its own product page, so buyers
+              can find a 72&quot; reducer or a 48&quot; 3R elbow from a search.
+            </p>
+          </div>
+          <div
+            class="tbl-wrap"
+            tabindex="0"
+            role="region"
+            aria-label="Manufacturing range table"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Design</th>
+                  <th scope="col">Max OD</th>
+                  <th scope="col">Max wall</th>
+                  <th scope="col">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="p">Elbows</td>
+                  <td>
+                    LR &amp; SR &middot; 45&deg;, 90&deg;, 180&deg;, special
+                    angles
+                  </td>
+                  <td class="n">92&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">3R Elbows</td>
+                  <td>1% segmentable &middot; 3R45, 3R90, special angles</td>
+                  <td class="n">48&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">5R Elbows</td>
+                  <td>1% segmentable &middot; 5R45, 5R90, special angles</td>
+                  <td class="n">30&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Reducing Elbows</td>
+                  <td>LR 90&deg;</td>
+                  <td class="n">36&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Induction Pipe Bends</td>
+                  <td>3D, 5D, 10D &middot; 45&deg;, 90&deg;, special angles</td>
+                  <td class="n">60&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Tees</td>
+                  <td>Straight, reducing, barred, flow</td>
+                  <td class="n">72&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Reducers</td>
+                  <td>Concentric &amp; eccentric</td>
+                  <td class="n">72&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Caps</td>
+                  <td>2:1 semi-elliptical</td>
+                  <td class="n">72&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless</td>
+                </tr>
+                <tr>
+                  <td class="p">Crosses</td>
+                  <td>Straight &amp; reducing</td>
+                  <td class="n">48&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Seamless &amp; Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Laterals</td>
+                  <td>45&deg; and specials</td>
+                  <td class="n">60&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Welded</td>
+                </tr>
+                <tr>
+                  <td class="p">Wyes</td>
+                  <td>90&deg; and specials</td>
+                  <td class="n">60&quot;</td>
+                  <td class="n">4&quot;</td>
+                  <td>Welded</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="materials">
+            <div class="mat-block">
+              <h3>Materials, specifications &amp; grades</h3>
+              <div
+                class="tbl-wrap mat-tbl"
+                tabindex="0"
+                role="region"
+                aria-label="Materials, specifications and grades"
+              >
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Material</th>
+                      <th scope="col">Specification</th>
+                      <th scope="col">Grades</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="p">Carbon Steel</td>
+                      <td>ASTM A234 &amp; ASME SA234</td>
+                      <td>WPB, WPC</td>
+                    </tr>
+                    <tr>
+                      <td class="p">High Yield</td>
+                      <td>MSS SP-75 &amp; ASTM A860</td>
+                      <td>WPHY 42, 52, 60, 65, 70</td>
+                    </tr>
+                    <tr>
+                      <td class="p">Low Temperature</td>
+                      <td>ASTM A420 &amp; ASME SA420</td>
+                      <td>WPL3, WPL6, WPL9</td>
+                    </tr>
+                    <tr>
+                      <td class="p">Chrome Moly</td>
+                      <td>ASTM A234 &amp; ASME SA234</td>
+                      <td>WP1, WP5, WP9, WP11, WP12, WP22, WP91 (Type 2)</td>
+                    </tr>
+                    <tr>
+                      <td class="p">Stainless Steel</td>
+                      <td>ASTM A403 &amp; ASME SA403</td>
+                      <td>
+                        304, 304H, 304L, 316, 316H, 317, 321, 321H, 347, 347H
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="p">Duplex</td>
+                      <td>ASTM A815</td>
+                      <td>2205 (UNS S31803), 2507</td>
+                    </tr>
+                    <tr>
+                      <td class="p">Nickel Alloys</td>
+                      <td>ASTM B366 &amp; ASME SB366</td>
+                      <td>
+                        Monel 400, Inconel 625, Incoloy 800, Incoloy 825,
+                        Hastelloy C276
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h3>Special products &amp; services</h3>
+              <div class="tags svc">
+                <span>Special diameter or wall thickness</span
+                ><span>Fittings with tangents</span
+                ><span>Segmenting elbows and bends</span><span>Beveling</span
+                ><span>Pipe straightening</span
+                ><span>Produced to customer specification and drawings</span>
+              </div>
+            </div>
+          </div>
+          <p class="src-note">
+            Ranges, materials, specifications, and grades provided by Dynamic
+            Products. Applies to every product type listed above.
+          </p>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="wrap">
+          <div class="about-grid">
+            <figure>
+              <img
+                src="images/current-site/dp_home_dpi_rev110912.jpg"
+                alt="Dynamic Products plant entrance on Peninsula Boulevard with large pipe outside"
+              />
+              <span class="tag">16520 Peninsula Blvd &middot; Houston, TX</span>
+            </figure>
+            <div class="about-copy">
+              <p class="eyebrow">The company at a glance</p>
+              <h2>Two plants, one mile apart, making fittings since 1969</h2>
+              <p>
+                Founded by Ron Lindquist and Roger Black, Dynamic Products is
+                privately held and has operated in Houston since 1970. About 80
+                people work at the main plant in sales, administration, and
+                production: receiving, raw material storage, cutting, forming,
+                bending, mandrel forming, heat treatment, sand blasting, quality
+                lab, final inspection, and shipping.
+              </p>
+              <p>
+                About 10 more work at the second location, a machining center
+                for beveling with additional raw material storage.
+              </p>
+              <div class="inds" aria-label="Industries served">
+                <span>Oil &amp; Gas</span><span>Petrochemical</span
+                ><span>Refinery</span><span>Power Generation</span
+                ><span>Nuclear</span><span>Pipeline</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-head">
+            <p class="eyebrow">Milestones</p>
+            <span class="mono">Scroll &rarr;</span>
+          </div>
+          <div
+            class="timeline"
+            tabindex="0"
+            role="region"
+            aria-label="Company milestones"
+          >
+            <ol>
+              <li>
+                <b>1969</b
+                ><span
+                  >Founded in Oregon to serve paper mill piping, supplying the
+                  Gulf Coast.</span
+                >
+              </li>
+              <li>
+                <b>1970</b
+                ><span
+                  >Moved to Houston to be closer to Gulf Coast customers.</span
+                >
+              </li>
+              <li><b>1972</b><span>ASME U and PP certification.</span></li>
+              <li>
+                <b>1984</b
+                ><span
+                  >Pipe bending machine with capacity up to 60&quot;
+                  diameter.</span
+                >
+              </li>
+              <li>
+                <b>1985</b
+                ><span
+                  >Butt-weld production expanded to 92&quot;. Sales reps added
+                  on East and West Coasts.</span
+                >
+              </li>
+              <li>
+                <b>1986</b
+                ><span
+                  >Bought the Houston plant for bending and butt-weld
+                  production. Mandrel forming up to 48&quot;.</span
+                >
+              </li>
+              <li>
+                <b>1995</b
+                ><span
+                  >Second Houston facility opened as the machining center.</span
+                >
+              </li>
+              <li>
+                <b>1998</b
+                ><span>Canadian Registration Numbers (CSA) obtained.</span>
+              </li>
+              <li><b>2008</b><span>PED certification.</span></li>
+              <li>
+                <b>2015</b
+                ><span
+                  >Dynamic Process Management System (DPMS) implemented.</span
+                >
+              </li>
+              <li><b>2016</b><span>ISO 9001:2015 certification.</span></li>
+              <li><b>2017</b><span>Lean manufacturing implemented.</span></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section solutions" id="solutions">
+        <div class="wrap">
+          <div class="sol-top">
+            <div>
+              <p class="eyebrow">Fitting solutions</p>
+              <h2>For all your needs, from one plant in Houston</h2>
+            </div>
+            <p>
+              A single piece or a large order, for emergency, project, or stock
+              requirements. Long-term employees who handle the technical,
+              manufacturing, and operational side, with a commitment to total
+              customer satisfaction.
+            </p>
+          </div>
+          <div class="sol-grid">
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M13 2L4 14h7l-1 8 9-12h-7z" /></svg></span
+              ><span class="mono">Emergency</span>
+              <h3>24/7 service</h3>
+              <p>
+                Customer service and manufacturing operations run around the
+                clock to produce and ship to your requirement.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"
+                  /></svg></span
+              ><span class="mono">Sourcing</span>
+              <h3>One stop shop</h3>
+              <p>
+                Emergency, project, or stock orders from one central plant, one
+                piece or large quantities.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 17a8 8 0 0 1 16 0" />
+                  <path d="M12 17l4-6" />
+                  <circle cx="12" cy="17" r="1" /></svg></span
+              ><span class="mono">Performance</span>
+              <h3>Experienced crew</h3>
+              <p>
+                Highly skilled, long-term employees solve technical,
+                manufacturing, and operational challenges.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"
+                  />
+                  <path d="M7.5 15h9" /></svg></span
+              ><span class="mono">Quality</span>
+              <h3>In-house lab</h3>
+              <p>
+                Destructive and non-destructive testing per specification, code,
+                or customer requirement.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" />
+                  <path d="M8.5 12l2.5 2.5 4.5-5" /></svg></span
+              ><span class="mono">Safety</span>
+              <h3>100% traceable</h3>
+              <p>
+                Chemical analysis of every pipe and plate, mechanical tests on
+                each product, traceability start to finish.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M12 8v4l3 2" /></svg></span
+              ><span class="mono">Technical</span>
+              <h3>ASME &amp; PED</h3>
+              <p>
+                Approved ASME materials manufacturer with PP and U stamps, and
+                Pressure Equipment Directive certified.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 4h14v16H5z" />
+                  <path d="M8.5 9l2 2 4-4M8.5 15h7" /></svg></span
+              ><span class="mono">Approval</span>
+              <h3>AML &amp; CRN</h3>
+              <p>
+                Listed on almost every major end-user and fabricator AML, with
+                all Canadian Registration Number certificates.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16M4 12h16M4 18h10" /></svg></span
+              ><span class="mono">Standard</span>
+              <h3>Code compliant</h3>
+              <p>
+                Processed to ASME B16.9, MSS SP-75, NACE, ISO 15156, CSA, PED,
+                or special customer requirements.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"
+                  /></svg></span
+              ><span class="mono">Service</span>
+              <h3>Beyond the fitting</h3>
+              <p>
+                Minimum tangents, segmenting, beveling, welding, heat treatment,
+                pipe straightening, and a deep raw material inventory.
+              </p>
+            </div>
+            <div class="sol">
+              <span class="ic"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 21V3l18 18z" />
+                  <path d="M7 21v-3M11 21v-3M7 13h3" /></svg></span
+              ><span class="mono">Engineering</span>
+              <h3>Engineered fittings</h3>
+              <p>
+                One of our greatest strengths: fittings and materials with
+                special properties and tolerances.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section quality" id="quality">
+        <div class="px bp" data-parallax="0.242" aria-hidden="true"></div>
+        <div class="px-tint" aria-hidden="true"></div>
+        <div class="wrap">
+          <p class="eyebrow">Quality &amp; certifications</p>
+          <h2>Quality you can verify</h2>
+          <div class="q-grid">
+            <div class="creds">
+              <div class="cred">
+                <img
+                  class="badge"
+                  src="images/certs/iso-9001-2015.png"
+                  alt="ISO 9001:2015 certified company seal"
+                  width="64"
+                  height="64"
+                />
+                <div>
+                  <span class="mono">Since 2016</span>
+                  <h3>ISO 9001:2015</h3>
+                  <p>Certified quality management system.</p>
+                </div>
+              </div>
+              <div class="cred">
+                <img
+                  class="badge sq"
+                  src="images/certs/asme-prt.png"
+                  alt="ASME PRT stamp"
+                  width="64"
+                  height="64"
+                />
+                <div>
+                  <span class="mono">ASME stamp</span>
+                  <h3>ASME PRT</h3>
+                  <p>Section I and Section VIII, Division 1.</p>
+                </div>
+              </div>
+              <div class="cred">
+                <img
+                  class="badge"
+                  src="images/certs/ped-2014-68-eu.png"
+                  alt="PED certified 2014/68/EU"
+                  width="64"
+                  height="64"
+                />
+                <div>
+                  <span class="mono">Since 2008</span>
+                  <h3>PED 2014/68/EU</h3>
+                  <p>
+                    Pressure Equipment Directive certified for European
+                    projects.
+                  </p>
+                </div>
+              </div>
+              <div class="cred">
+                <img
+                  class="badge sq"
+                  src="images/certs/crn.png"
+                  alt="CRN Canadian Registration Number"
+                  width="64"
+                  height="64"
+                />
+                <div>
+                  <span class="mono">Canada</span>
+                  <h3>CRN Certificates</h3>
+                  <p>
+                    Canadian Registration Numbers for projects across Canada.
+                  </p>
+                </div>
+              </div>
+              <div class="cred">
+                <img
+                  class="badge"
+                  src="images/certs/buy-america.png"
+                  alt="Build America Buy America compliant"
+                  width="64"
+                  height="64"
+                />
+                <div>
+                  <span class="mono">Compliant</span>
+                  <h3>Buy America</h3>
+                  <p>100% US melt and manufacture.</p>
+                </div>
+              </div>
+              <div class="cred">
+                <span class="badge ico" aria-hidden="true"
+                  ><svg viewBox="0 0 24 24">
+                    <path
+                      d="M9 3h6M10 3v6L5 19a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3"
+                    />
+                    <path d="M7.5 15h9" /></svg
+                ></span>
+                <div>
+                  <span class="mono">In-house &middot; AML listed</span>
+                  <h3>Metallurgical Lab</h3>
+                  <p>
+                    Chemical analysis of every pipe and plate, 100%
+                    traceability, listed on major end-user AMLs.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="q-side">
+              <img
+                class="plate-img"
+                src="images/current-site/MarkingPlate.jpg"
+                width="1280"
+                height="475"
+                alt="Steel marking plate: Marking on every fitting. Dynamic Products, 48 in 3R 90 ELL, WPHY 70 segmentable, ASME B16.9, Heat 000000. Illustrative marking format: each fitting carries its size, type, material grade, and the heat number that ties it back to the mill test report."
+              />
+              <div class="stds">
+                <h3>Standards we process to</h3>
+                <div class="tags">
+                  <span>ASME B16.9</span><span>MSS SP-75</span
+                  ><span>ASTM A234 / SA234</span><span>ASTM A420 / SA420</span
+                  ><span>ASTM A403 / SA403</span><span>ASTM A860</span
+                  ><span>ASTM A815</span><span>ASTM B366 / SB366</span
+                  ><span>NACE MR0175 / ISO 15156</span><span>NACE MR0103</span
+                  ><span>PED 2014/68/EU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery" id="gallery">
+        <div class="wrap">
+          <div class="gal-head">
+            <div>
+              <p class="eyebrow">Product gallery</p>
+              <h2>From the shop floor to the job site</h2>
+            </div>
+            <p>
+              Photos from the current website. New professional photography of
+              both facilities will replace these before launch.
+            </p>
+          </div>
+          <div class="gal">
+            <figure class="w t">
+              <img
+                src="images/current-site/dp_home_img_1487-1024x768.jpg"
+                alt="Multi-outlet header tee on pallets"
+              />
+              <figcaption>Multi-outlet header</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_speciality.jpg"
+                alt="Barred tee with guide bars being lifted"
+              />
+              <figcaption>Barred tee</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_copy-of-picture-1021.jpg"
+                alt="Worker inside a very large diameter fitting"
+              />
+              <figcaption>Inside a large-diameter fitting</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_imag0269-1024x768.jpg"
+                alt="Machined stainless fitting on the machining table"
+              />
+              <figcaption>Machining center</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_oddball1.jpg"
+                alt="Large ring with bolt holes on the shop floor"
+              />
+              <figcaption>Special order</figcaption>
+            </figure>
+            <figure class="w">
+              <img
+                src="images/current-site/dp_home_hpim4935-1024x768.jpg"
+                alt="Truck loaded with fittings leaving the plant"
+              />
+              <figcaption>Shipping</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_img_3726.jpg"
+                alt="Large stainless induction bend on a trailer"
+              />
+              <figcaption>Stainless induction bend</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/current-site/dp_home_img_4782-1024x576.jpg"
+                alt="Concentric reducer on a pallet"
+              />
+              <figcaption>Concentric reducer</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section rfq" id="rfq">
+        <div class="px bp" data-parallax="0.242" aria-hidden="true"></div>
+        <div class="px-tint" aria-hidden="true"></div>
+        <div class="wrap rfq-grid">
+          <div>
+            <p class="eyebrow on-red">Request a quote</p>
+            <h2>Ready to build with a stronger supplier?</h2>
+            <p class="lead">
+              Send the product, size, wall thickness, and material grade. A DPI
+              representative will respond shortly with a quote and lead time.
+            </p>
+            <div class="direct">
+              <span class="mono">Call or email the sales team</span>
+              <b>281-457-3500</b>
+              <span
+                >dpi@dynamicproducts.net &nbsp;&middot;&nbsp; Fax
+                281-457-2879</span
+              >
+            </div>
+          </div>
+          <form class="form" id="rfqForm" novalidate>
+            <label
+              >Name<input
+                id="f-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Full name"
+            /></label>
+            <label
+              >Company<input
+                id="f-company"
+                name="company"
+                type="text"
+                autocomplete="organization"
+                placeholder="Company"
+            /></label>
+            <label
+              >Email<input
+                id="f-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@company.com"
+            /></label>
+            <label
+              >Phone<input
+                id="f-phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                placeholder="Phone"
+            /></label>
+            <label class="full"
+              >Product
+              <select id="f-type" name="type">
+                <option>Butt-weld elbows</option>
+                <option>Induction pipe bends</option>
+                <option>Butt-weld tees</option>
+                <option>Butt-weld reducers</option>
+                <option>Caps, crosses, laterals, wyes</option>
+                <option>Special or engineered fitting</option>
+              </select>
+            </label>
+            <label class="full"
+              >Size, wall thickness, material grade, quantity
+              <textarea
+                id="f-spec"
+                name="spec"
+                placeholder="Example: 48 in 3R 90 elbow, WPHY 70, segmentable, qty 2"
+              ></textarea>
+            </label>
+            <button class="btn" type="submit">Send Request</button>
+            <p class="note" id="rfqNote" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <span class="foot-logo"
+              ><svg
+                class="logo-svg"
+                role="img"
+                aria-label="Dynamic Products, Inc."
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 172.301 29.256"
+              >
+                <g>
+                  <g>
+                    <path
+                      class="wm"
+                      d="M27.448,7.031h3.5a6.855,6.855,0,0,1,1.807.181,3.177,3.177,0,0,1,1.432.875A4.152,4.152,0,0,1,35.1,9.626a7.006,7.006,0,0,1,.311,2.245,6.243,6.243,0,0,1-.291,2.021A4.194,4.194,0,0,1,34.1,15.57a3.37,3.37,0,0,1-1.348.758,5.8,5.8,0,0,1-1.7.2H27.448v-9.5Zm1.918,1.607v6.291H30.8a5.221,5.221,0,0,0,1.16-.091,1.771,1.771,0,0,0,.774-0.4,2.012,2.012,0,0,0,.5-0.917,6.2,6.2,0,0,0,.194-1.739,5.681,5.681,0,0,0-.194-1.691,2.178,2.178,0,0,0-.544-0.92A1.829,1.829,0,0,0,31.8,8.728a8.716,8.716,0,0,0-1.575-.091H29.365Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M36.161,9.648H38.1l1.646,4.885L41.35,9.648h1.885l-2.43,6.621-0.434,1.2a4.9,4.9,0,0,1-.457.92,1.989,1.989,0,0,1-.5.515,2.181,2.181,0,0,1-.693.308,3.6,3.6,0,0,1-.93.11,4.822,4.822,0,0,1-1.03-.11L36.6,17.785a4.026,4.026,0,0,0,.771.084,1.143,1.143,0,0,0,.939-0.373,2.585,2.585,0,0,0,.466-0.949Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M50.66,16.528H48.84V13.017a5.411,5.411,0,0,0-.117-1.442,1.008,1.008,0,0,0-.379-0.508,1.083,1.083,0,0,0-.632-0.181,1.46,1.46,0,0,0-.849.259,1.3,1.3,0,0,0-.515.687,5.939,5.939,0,0,0-.139,1.581v3.116h-1.82V9.648H46.08v1.011a2.819,2.819,0,0,1,3.369-.949,1.85,1.85,0,0,1,.755.554,2.006,2.006,0,0,1,.356.764,5.675,5.675,0,0,1,.1,1.225v4.276Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M53.867,11.747l-1.652-.3a2.571,2.571,0,0,1,.958-1.477,3.509,3.509,0,0,1,2.021-.48,4.358,4.358,0,0,1,1.814.288,1.809,1.809,0,0,1,.839.732,3.752,3.752,0,0,1,.243,1.629l-0.02,2.125a7.358,7.358,0,0,0,.088,1.338,3.873,3.873,0,0,0,.327.923h-1.8q-0.071-.181-0.175-0.538c-0.031-.108-0.052-0.179-0.065-0.214a3.283,3.283,0,0,1-1,.68,2.857,2.857,0,0,1-1.134.227,2.344,2.344,0,0,1-1.675-.577,1.916,1.916,0,0,1-.612-1.458,1.959,1.959,0,0,1,.279-1.04,1.82,1.82,0,0,1,.781-0.7,6.112,6.112,0,0,1,1.448-.424,9.881,9.881,0,0,0,1.768-.447V11.857a0.942,0.942,0,0,0-.259-0.748,1.552,1.552,0,0,0-.978-0.224,1.306,1.306,0,0,0-.758.191A1.331,1.331,0,0,0,53.867,11.747ZM56.3,13.224A11.4,11.4,0,0,1,55.2,13.5a3.353,3.353,0,0,0-.991.317,0.76,0.76,0,0,0-.356.642,0.893,0.893,0,0,0,.285.661,1,1,0,0,0,.725.279,1.578,1.578,0,0,0,.939-0.324,1.137,1.137,0,0,0,.434-0.6,3.593,3.593,0,0,0,.072-0.888V13.224Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M59.75,9.648h1.678v0.939a2.7,2.7,0,0,1,2.144-1.095,2.311,2.311,0,0,1,1.147.272,2.091,2.091,0,0,1,.8.823,3.181,3.181,0,0,1,.978-0.823,2.4,2.4,0,0,1,1.121-.272A2.5,2.5,0,0,1,68.9,9.8a1.887,1.887,0,0,1,.784.9,3.928,3.928,0,0,1,.188,1.425v4.4h-1.82V12.6a2.931,2.931,0,0,0-.188-1.322,0.863,0.863,0,0,0-.778-0.389,1.239,1.239,0,0,0-.719.233,1.291,1.291,0,0,0-.486.683,4.918,4.918,0,0,0-.149,1.422v3.3H63.908V12.758a5.221,5.221,0,0,0-.1-1.3,0.826,0.826,0,0,0-.3-0.434,0.954,0.954,0,0,0-.554-0.142,1.326,1.326,0,0,0-.758.227,1.242,1.242,0,0,0-.483.654,4.866,4.866,0,0,0-.146,1.419v3.343H59.75V9.648Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M71.683,8.715V7.031H73.5V8.715h-1.82Zm0,7.813V9.648H73.5v6.88h-1.82Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M81.369,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653A3.2,3.2,0,0,1,78.3,9.493a3.325,3.325,0,0,1,2,.541A3,3,0,0,1,81.369,11.682Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M86.447,16.528v-9.5h3.077a11.163,11.163,0,0,1,2.28.142,2.492,2.492,0,0,1,1.367.93,2.951,2.951,0,0,1,.55,1.85,3.1,3.1,0,0,1-.317,1.47,2.6,2.6,0,0,1-.807.936,2.778,2.778,0,0,1-.995.45,10.928,10.928,0,0,1-1.989.136h-1.25v3.583H86.447Zm1.918-7.891v2.7h1.05a4.959,4.959,0,0,0,1.516-.149,1.259,1.259,0,0,0,.6-0.466,1.276,1.276,0,0,0,.217-0.739,1.229,1.229,0,0,0-.3-0.855A1.328,1.328,0,0,0,90.672,8.7a9.229,9.229,0,0,0-1.38-.065H88.365Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M97.027,16.528H95.206V9.648H96.9v0.978a2.944,2.944,0,0,1,.781-0.914,1.439,1.439,0,0,1,.787-0.22,2.312,2.312,0,0,1,1.2.343L99.1,11.423a1.6,1.6,0,0,0-.855-0.3,1.011,1.011,0,0,0-.648.211,1.437,1.437,0,0,0-.418.761,10.824,10.824,0,0,0-.152,2.306v2.125Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M100.027,12.991a3.722,3.722,0,0,1,.447-1.756,3.069,3.069,0,0,1,1.267-1.3,3.758,3.758,0,0,1,1.83-.447,3.436,3.436,0,0,1,2.559,1.014,3.5,3.5,0,0,1,1,2.562,3.545,3.545,0,0,1-1.008,2.588,3.4,3.4,0,0,1-2.536,1.027,4,4,0,0,1-1.8-.428A2.932,2.932,0,0,1,100.474,15,4.177,4.177,0,0,1,100.027,12.991Zm1.866,0.1a2.278,2.278,0,0,0,.486,1.568,1.588,1.588,0,0,0,2.393,0,2.31,2.31,0,0,0,.483-1.581,2.268,2.268,0,0,0-.483-1.555,1.588,1.588,0,0,0-2.393,0A2.279,2.279,0,0,0,101.893,13.088Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M114.862,16.528h-1.691V15.518a2.73,2.73,0,0,1-.994.878,2.555,2.555,0,0,1-1.157.288,2.62,2.62,0,0,1-2.031-.956,3.886,3.886,0,0,1-.845-2.666,3.841,3.841,0,0,1,.823-2.659,2.682,2.682,0,0,1,2.08-.91,2.576,2.576,0,0,1,2,.959V7.031h1.82v9.5ZM110,12.939a3.15,3.15,0,0,0,.3,1.594,1.376,1.376,0,0,0,1.231.713,1.34,1.34,0,0,0,1.069-.535,2.466,2.466,0,0,0,.44-1.6,2.7,2.7,0,0,0-.427-1.707,1.405,1.405,0,0,0-2.18-.007A2.325,2.325,0,0,0,110,12.939Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M121.185,16.528V15.5a2.653,2.653,0,0,1-.988.868,2.771,2.771,0,0,1-1.293.317,2.528,2.528,0,0,1-1.244-.3,1.8,1.8,0,0,1-.8-0.855A3.813,3.813,0,0,1,116.618,14V9.648h1.82V12.81a8.75,8.75,0,0,0,.1,1.778,0.967,0.967,0,0,0,.366.518,1.126,1.126,0,0,0,.674.191,1.433,1.433,0,0,0,.836-0.256,1.3,1.3,0,0,0,.505-0.635,7.377,7.377,0,0,0,.136-1.856v-2.9h1.82v6.88h-1.691Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M130.761,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653,3.2,3.2,0,0,1,2.436-.949,3.325,3.325,0,0,1,2,.541A3,3,0,0,1,130.761,11.682Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M135.3,9.648V11.1h-1.244v2.773a6.958,6.958,0,0,0,.035.982,0.4,0.4,0,0,0,.162.23,0.512,0.512,0,0,0,.308.091A2.357,2.357,0,0,0,135.289,15l0.156,1.412a3.624,3.624,0,0,1-1.438.272,2.28,2.28,0,0,1-.888-0.165,1.291,1.291,0,0,1-.58-0.427,1.685,1.685,0,0,1-.256-0.71,8.835,8.835,0,0,1-.058-1.283v-3h-0.836V9.648h0.836V8.281l1.827-1.062v2.43H135.3Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M135.918,14.565l1.827-.278a1.338,1.338,0,0,0,.473.806,1.6,1.6,0,0,0,1,.275,1.8,1.8,0,0,0,1.063-.259,0.579,0.579,0,0,0,.24-0.486,0.476,0.476,0,0,0-.13-0.343,1.448,1.448,0,0,0-.609-0.24,9.809,9.809,0,0,1-2.792-.888,1.772,1.772,0,0,1-.816-1.548,1.908,1.908,0,0,1,.706-1.5,3.3,3.3,0,0,1,2.19-.609,3.82,3.82,0,0,1,2.1.46,2.354,2.354,0,0,1,.946,1.36l-1.717.317a1.062,1.062,0,0,0-.418-0.615A1.529,1.529,0,0,0,139.1,10.8a1.98,1.98,0,0,0-1.03.2,0.432,0.432,0,0,0-.207.369,0.4,0.4,0,0,0,.182.331,6.824,6.824,0,0,0,1.7.512,5.059,5.059,0,0,1,2.031.81,1.682,1.682,0,0,1,.57,1.354,2.078,2.078,0,0,1-.79,1.626,3.5,3.5,0,0,1-2.339.68,3.837,3.837,0,0,1-2.225-.57A2.625,2.625,0,0,1,135.918,14.565Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M143.893,14.708h1.82v1.3a4.544,4.544,0,0,1-.136,1.247,1.867,1.867,0,0,1-.515.819,2.648,2.648,0,0,1-.962.57l-0.356-.751a1.535,1.535,0,0,0,.784-0.5,1.5,1.5,0,0,0,.246-0.868h-0.881v-1.82Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M151.266,16.528v-9.5h1.918v9.5h-1.918Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M161.255,16.528h-1.82V13.017a5.411,5.411,0,0,0-.117-1.442,1.008,1.008,0,0,0-.379-0.508,1.083,1.083,0,0,0-.632-0.181,1.46,1.46,0,0,0-.849.259,1.3,1.3,0,0,0-.515.687,5.939,5.939,0,0,0-.139,1.581v3.116h-1.82V9.648h1.691v1.011a2.819,2.819,0,0,1,3.369-.949,1.85,1.85,0,0,1,.755.554,2.006,2.006,0,0,1,.356.764,5.675,5.675,0,0,1,.1,1.225v4.276Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M169.1,11.682l-1.795.324a1.3,1.3,0,0,0-.412-0.81,1.243,1.243,0,0,0-.832-0.272,1.36,1.36,0,0,0-1.085.47,2.406,2.406,0,0,0-.405,1.571,2.782,2.782,0,0,0,.412,1.73,1.351,1.351,0,0,0,1.1.505,1.227,1.227,0,0,0,.849-0.295,1.771,1.771,0,0,0,.467-1.014l1.788,0.3a3.174,3.174,0,0,1-1.069,1.859,3.308,3.308,0,0,1-2.118.629,3.148,3.148,0,0,1-2.407-.952,3.691,3.691,0,0,1-.9-2.637,3.7,3.7,0,0,1,.9-2.653,3.2,3.2,0,0,1,2.436-.949,3.325,3.325,0,0,1,2,.541A3,3,0,0,1,169.1,11.682Z"
+                    />
+                    <path
+                      class="wm"
+                      d="M170.481,16.528v-1.82h1.82v1.82h-1.82Z"
+                    />
+                  </g>
+                  <path
+                    class="tg"
+                    d="M26.748,25.926l0.994-4.749h3.323l-0.168.794H28.553l-0.24,1.14h2.3l-0.165.794h-2.3l-0.421,2.021H26.748Zm4.778-3.44h0.93l-0.719,3.44h-0.93ZM31.8,21.178h0.93l-0.175.842h-0.93Zm1.085,2,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.492,4.492,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.472,2.472,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.922,4.922,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.209,0,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.5,4.5,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.471,2.471,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.924,4.924,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.695-.69h0.93L38,25.926h-0.93Zm0.272-1.309h0.93l-0.175.842h-0.93Zm1.584,1.309h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.082,4.082,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.293,4.293,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.453.172,1.194,1.194,0,0,0-.392.454,3.834,3.834,0,0,0-.233.82l-0.295,1.412h-0.93ZM42.9,26.244a1.058,1.058,0,0,1,.01-0.136L43.9,26.25a0.423,0.423,0,0,0,.049.225,0.377,0.377,0,0,0,.157.13,0.68,0.68,0,0,0,.3.053,0.852,0.852,0,0,0,.473-0.117,0.64,0.64,0,0,0,.217-0.292,3.613,3.613,0,0,0,.133-0.551l0.032-.162a1.547,1.547,0,0,1-1,.4,1.07,1.07,0,0,1-.829-0.356A1.5,1.5,0,0,1,43.1,24.54a2.75,2.75,0,0,1,.22-1.111,1.683,1.683,0,0,1,.619-0.764,1.475,1.475,0,0,1,.813-0.259,1.147,1.147,0,0,1,.628.181,1.217,1.217,0,0,1,.444.509l0.13-.609h0.871l-0.6,2.867a9.577,9.577,0,0,1-.246.985,1.731,1.731,0,0,1-.23.47,1.113,1.113,0,0,1-.327.293,1.429,1.429,0,0,1-.466.17,3.085,3.085,0,0,1-.583.052,1.989,1.989,0,0,1-1.1-.249,0.924,0.924,0,0,1-.373-0.829h0Zm1.208-2.368a1.859,1.859,0,0,0-.1.57,0.893,0.893,0,0,0,.177.6,0.559,0.559,0,0,0,.442.206,0.743,0.743,0,0,0,.471-0.185,1.154,1.154,0,0,0,.35-0.525,1.951,1.951,0,0,0,.121-0.658,0.858,0.858,0,0,0-.2-0.59,0.6,0.6,0,0,0-.457-0.224,0.655,0.655,0,0,0-.458.2,1.456,1.456,0,0,0-.345.609h0Zm4.9,0.512,0.93-.049a1.037,1.037,0,0,0,.152.6,1,1,0,0,0,.79.253,1.111,1.111,0,0,0,.693-0.172,0.516,0.516,0,0,0,.214-0.415,0.448,0.448,0,0,0-.175-0.356,3.4,3.4,0,0,0-.675-0.347,6.427,6.427,0,0,1-.807-0.4,1.171,1.171,0,0,1-.4-0.416,1.19,1.19,0,0,1-.146-0.6,1.288,1.288,0,0,1,.434-0.994,1.8,1.8,0,0,1,1.257-.4,1.933,1.933,0,0,1,1.294.392,1.444,1.444,0,0,1,.5,1.043l-0.936.042a0.762,0.762,0,0,0-.246-0.522,0.93,0.93,0,0,0-.622-0.181,0.917,0.917,0,0,0-.578.143,0.446,0.446,0,0,0-.173.36,0.42,0.42,0,0,0,.159.337,3.253,3.253,0,0,0,.7.373,3.923,3.923,0,0,1,1.043.573,1.11,1.11,0,0,1,.334.832,1.391,1.391,0,0,1-.5,1.074,2,2,0,0,1-1.385.445,2.527,2.527,0,0,1-1.061-.206,1.263,1.263,0,0,1-.633-0.572A1.737,1.737,0,0,1,49.013,24.388Zm4.405,0.11a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,53.419,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm1.629,0.965,0.994-4.749h0.926l-0.991,4.749h-0.93Zm2.562-3.44h0.93L60.4,24.524a3.2,3.2,0,0,0-.078.457,0.344,0.344,0,0,0,.11.256,0.388,0.388,0,0,0,.282.107,0.661,0.661,0,0,0,.243-0.047,1.044,1.044,0,0,0,.246-0.143,1.316,1.316,0,0,0,.227-0.219,1.394,1.394,0,0,0,.188-0.324,3.065,3.065,0,0,0,.133-0.486l0.343-1.639h0.93L62.3,25.926H61.432l0.1-.466a1.762,1.762,0,0,1-1.241.547,0.9,0.9,0,0,1-.667-0.243,0.88,0.88,0,0,1-.243-0.651,4.414,4.414,0,0,1,.11-0.709Zm3.573,0.69,0.143-.69h0.454l0.113-.551,1.066-.641-0.249,1.192h0.567l-0.143.69h-0.57l-0.3,1.441a4.5,4.5,0,0,0-.081.447,0.211,0.211,0,0,0,.068.167,0.379,0.379,0,0,0,.246.06q0.061,0,.308-0.023l-0.146.69a2.471,2.471,0,0,1-.492.049,1.1,1.1,0,0,1-.716-0.189,0.653,0.653,0,0,1-.224-0.526,4.923,4.923,0,0,1,.12-0.732l0.288-1.383h-0.45Zm2.695-.69h0.93l-0.719,3.44h-0.93Zm0.272-1.309h0.93l-0.175.842h-0.93Zm0.988,3.32a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,67.418,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.368-2.475h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.082,4.082,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.294,4.294,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.454.172,1.194,1.194,0,0,0-.392.454,3.834,3.834,0,0,0-.233.82l-0.295,1.412h-0.93Zm3.2,2.478,0.9-.143a0.734,0.734,0,0,0,.784.522,0.831,0.831,0,0,0,.509-0.143,0.286,0.286,0,0,0,.133-0.236,0.243,0.243,0,0,0-.068-0.168,1.179,1.179,0,0,0-.385-0.175A4.171,4.171,0,0,1,76.1,24.18a0.807,0.807,0,0,1-.314-0.661,0.945,0.945,0,0,1,.3-0.7,1.743,1.743,0,0,1,1.26-.411,1.723,1.723,0,0,1,1,.243,1.059,1.059,0,0,1,.431.658l-0.858.149a0.53,0.53,0,0,0-.22-0.282,0.941,0.941,0,0,0-.5-0.126,0.7,0.7,0,0,0-.419.1,0.279,0.279,0,0,0-.128.224,0.249,0.249,0,0,0,.13.214,3.038,3.038,0,0,0,.522.181,2.764,2.764,0,0,1,.91.389,0.816,0.816,0,0,1,.324.648,1.1,1.1,0,0,1-.411.849,1.706,1.706,0,0,1-1.16.36,2.051,2.051,0,0,1-1.152-.274A1.356,1.356,0,0,1,75.266,24.964Zm4.347,0.065h0.92l-0.188.9h-0.92Zm2.148,0h0.92l-0.188.9h-0.92Zm2.151,0h0.917l-0.188.9H83.724Zm4.195-2.543-0.143.68H87.306l-0.577,2.76H85.8l0.577-2.76H85.858L86,22.486h0.518l0.075-.353a2.545,2.545,0,0,1,.172-0.586,0.8,0.8,0,0,1,.329-0.329,1.173,1.173,0,0,1,.572-0.121,2.884,2.884,0,0,1,.9.155l-0.181.664a1.776,1.776,0,0,0-.541-0.113,0.28,0.28,0,0,0-.236.1,0.983,0.983,0,0,0-.107.34l-0.052.243h0.658ZM88.055,24.5a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.809,1.809,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.637,1.637,0,0,1,88.055,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.3-2.475h0.868l-0.139.667a1.33,1.33,0,0,1,1.053-.748,1.082,1.082,0,0,1,.431.1l-0.356.761a0.79,0.79,0,0,0-.269-0.045,0.826,0.826,0,0,0-.487.181,1.216,1.216,0,0,0-.387.484,4.818,4.818,0,0,0-.275.96l-0.227,1.079h-0.93Zm5.07,0.975L96.8,23.384a1.365,1.365,0,0,1,.543-0.719,1.814,1.814,0,0,1,1.025-.259,1.5,1.5,0,0,1,.981.267,0.823,0.823,0,0,1,.317.653,2.132,2.132,0,0,1-.028.33q-0.028.175-.193,0.92a4.722,4.722,0,0,0-.136.862,1.775,1.775,0,0,0,.078.489h-0.9a1.782,1.782,0,0,1-.068-0.389,1.425,1.425,0,0,1-.47.348,1.275,1.275,0,0,1-.534.121,0.954,0.954,0,0,1-.706-0.28,0.978,0.978,0,0,1-.279-0.721,1.042,1.042,0,0,1,.306-0.787,1.782,1.782,0,0,1,1.093-.356,4.341,4.341,0,0,0,.888-0.133,1.148,1.148,0,0,0,.058-0.311,0.313,0.313,0,0,0-.12-0.249,0.544,0.544,0,0,0-.356-0.1,0.67,0.67,0,0,0-.394.1A0.507,0.507,0,0,0,97.707,23.461Zm0.884,0.862a1.909,1.909,0,0,1-.224.042,2.125,2.125,0,0,0-.913.246,0.375,0.375,0,0,0-.152.314,0.364,0.364,0,0,0,.117.274,0.426,0.426,0,0,0,.308.112,0.814,0.814,0,0,0,.4-0.1,0.7,0.7,0,0,0,.279-0.262,1.793,1.793,0,0,0,.164-0.5Zm1.487,1.6,0.994-4.749H102l-0.991,4.749h-0.93Zm1.843,0,0.994-4.749h0.926l-0.991,4.749h-0.93Zm3.981-3.44h0.926l0.233,1.714q0.087,0.661.1,0.926a7.421,7.421,0,0,1,.5-1.114l0.823-1.526h0.985l-2.125,3.777a5.267,5.267,0,0,1-.413.658,1.088,1.088,0,0,1-.363.295,1.123,1.123,0,0,1-.51.107,2.485,2.485,0,0,1-.664-0.1l0.081-.693a1.178,1.178,0,0,0,.327.049,0.842,0.842,0,0,0,.7-0.648ZM109.44,24.5a2.123,2.123,0,0,1,.539-1.524,1.863,1.863,0,0,1,1.417-.569,1.625,1.625,0,0,1,1.189.419,1.509,1.509,0,0,1,.428,1.129,2.118,2.118,0,0,1-.534,1.445,1.81,1.81,0,0,1-1.432.609,1.849,1.849,0,0,1-.862-0.194,1.268,1.268,0,0,1-.56-0.551A1.638,1.638,0,0,1,109.44,24.5Zm2.28,0.463a1.752,1.752,0,0,0,.369-1.127,0.73,0.73,0,0,0-.193-0.53,0.661,0.661,0,0,0-.5-0.2,0.833,0.833,0,0,0-.534.186,1.2,1.2,0,0,0-.363.541,1.915,1.915,0,0,0-.13.653,0.829,0.829,0,0,0,.2.586,0.659,0.659,0,0,0,.505.217,0.789,0.789,0,0,0,.641-0.327h0Zm2.348-2.475H115l-0.424,2.037a3.2,3.2,0,0,0-.078.457,0.344,0.344,0,0,0,.11.256,0.388,0.388,0,0,0,.282.107,0.661,0.661,0,0,0,.243-0.047,1.044,1.044,0,0,0,.246-0.143,1.315,1.315,0,0,0,.227-0.219,1.394,1.394,0,0,0,.188-0.324,3.063,3.063,0,0,0,.133-0.486l0.343-1.639h0.93l-0.719,3.44H115.61l0.1-.466a1.762,1.762,0,0,1-1.241.547,0.9,0.9,0,0,1-.667-0.243,0.88,0.88,0,0,1-.243-0.651,4.415,4.415,0,0,1,.11-0.709Zm4.007,0h0.868l-0.139.667a1.33,1.33,0,0,1,1.053-.748,1.082,1.082,0,0,1,.431.1l-0.356.761a0.79,0.79,0,0,0-.269-0.045,0.827,0.827,0,0,0-.488.181,1.216,1.216,0,0,0-.387.484,4.816,4.816,0,0,0-.275.96l-0.227,1.079h-0.93Zm4.49,0h0.881l-0.091.447a2.423,2.423,0,0,1,.617-0.407,1.532,1.532,0,0,1,.6-0.121,0.907,0.907,0,0,1,.669.243,0.868,0.868,0,0,1,.245.645,4.083,4.083,0,0,1-.107.687l-0.4,1.947h-0.93l0.408-1.953a4.3,4.3,0,0,0,.091-0.522,0.372,0.372,0,0,0-.105-0.28,0.4,0.4,0,0,0-.293-0.1,0.823,0.823,0,0,0-.454.172,1.194,1.194,0,0,0-.392.454,3.832,3.832,0,0,0-.233.82l-0.295,1.412h-0.93Zm6.734,1.4a2.593,2.593,0,0,1-.065.606H126.9q0,0.055,0,.084a0.78,0.78,0,0,0,.2.554,0.628,0.628,0,0,0,.478.211,0.8,0.8,0,0,0,.722-0.479L129.127,25a1.751,1.751,0,0,1-.649.753,1.7,1.7,0,0,1-.912.251,1.516,1.516,0,0,1-1.127-.439A1.579,1.579,0,0,1,126,24.407a2.113,2.113,0,0,1,.392-1.257,1.765,1.765,0,0,1,1.526-.745,1.323,1.323,0,0,1,1,.39,1.52,1.52,0,0,1,.373,1.093h0Zm-0.849.039q0-.062,0-0.094a0.835,0.835,0,0,0-.172-0.573,0.588,0.588,0,0,0-.46-0.191,0.731,0.731,0,0,0-.517.217,1.157,1.157,0,0,0-.309.641h1.454Zm4.539-.039a2.592,2.592,0,0,1-.065.606h-2.332q0,0.055,0,.084a0.78,0.78,0,0,0,.2.554,0.628,0.628,0,0,0,.478.211,0.8,0.8,0,0,0,.722-0.479L132.817,25a1.751,1.751,0,0,1-.649.753,1.7,1.7,0,0,1-.912.251,1.516,1.516,0,0,1-1.127-.439,1.579,1.579,0,0,1-.434-1.161,2.113,2.113,0,0,1,.392-1.257,1.765,1.765,0,0,1,1.526-.745,1.323,1.323,0,0,1,1,.39,1.52,1.52,0,0,1,.373,1.093h0Zm-0.849.039q0-.062,0-0.094a0.835,0.835,0,0,0-.172-0.573,0.588,0.588,0,0,0-.46-0.191,0.731,0.731,0,0,0-.517.217,1.158,1.158,0,0,0-.309.641h1.454Zm4.3,2h-0.881l0.078-.373a1.708,1.708,0,0,1-.5.348,1.385,1.385,0,0,1-.552.105,1.117,1.117,0,0,1-.867-0.364,1.55,1.55,0,0,1-.332-1.077,2.546,2.546,0,0,1,.466-1.493,1.439,1.439,0,0,1,1.234-.667,1.148,1.148,0,0,1,1.04.551l0.373-1.778h0.93Zm-2.148-1.4a0.832,0.832,0,0,0,.186.577,0.592,0.592,0,0,0,.458.207,0.744,0.744,0,0,0,.471-0.173,1.173,1.173,0,0,0,.35-0.53,1.976,1.976,0,0,0,.131-0.683,0.883,0.883,0,0,0-.2-0.6,0.6,0.6,0,0,0-.463-0.23,0.769,0.769,0,0,0-.671.454A1.927,1.927,0,0,0,134.295,24.527Zm2.9,0.437,0.9-.143a0.734,0.734,0,0,0,.784.522,0.831,0.831,0,0,0,.509-0.143,0.286,0.286,0,0,0,.133-0.236,0.243,0.243,0,0,0-.068-0.168,1.179,1.179,0,0,0-.385-0.175,4.171,4.171,0,0,1-1.043-.441,0.807,0.807,0,0,1-.314-0.661,0.945,0.945,0,0,1,.3-0.7,1.743,1.743,0,0,1,1.26-.411,1.723,1.723,0,0,1,1,.243,1.059,1.059,0,0,1,.431.658l-0.858.149a0.53,0.53,0,0,0-.22-0.282,0.941,0.941,0,0,0-.5-0.126,0.7,0.7,0,0,0-.419.1,0.278,0.278,0,0,0-.128.224,0.249,0.249,0,0,0,.13.214,3.039,3.039,0,0,0,.522.181,2.764,2.764,0,0,1,.91.389,0.816,0.816,0,0,1,.324.648,1.1,1.1,0,0,1-.411.849,1.706,1.706,0,0,1-1.16.36,2.051,2.051,0,0,1-1.152-.274A1.356,1.356,0,0,1,137.2,24.964Z"
+                  />
+                  <g>
+                    <rect
+                      class="cls-1"
+                      width="22.459"
+                      height="29.256"
+                      rx="5.139"
+                      ry="5.139"
+                    />
+                    <path
+                      class="cls-3"
+                      d="M17.355,1.294H5.1A3.854,3.854,0,0,0,1.25,5.149V24.107A3.854,3.854,0,0,0,5.1,27.961h12.25a3.854,3.854,0,0,0,3.854-3.854V5.149A3.854,3.854,0,0,0,17.355,1.294Zm1.708,22.583a1.854,1.854,0,0,1-1.854,1.854H5.25A1.854,1.854,0,0,1,3.4,23.878V5.378A1.854,1.854,0,0,1,5.25,3.524H17.209a1.854,1.854,0,0,1,1.854,1.854v18.5Z"
+                    />
+                    <rect
+                      class="cls-4"
+                      x="7.402"
+                      y="5.118"
+                      width="2.133"
+                      height="5.986"
+                    />
+                    <rect
+                      class="cls-4"
+                      x="9.829"
+                      y="10.999"
+                      width="2.133"
+                      height="5.795"
+                    />
+                    <path
+                      class="cls-1"
+                      d="M12.371,8.163a2.917,2.917,0,0,0-2.69,1.758,2.865,2.865,0,1,0,0,2.212A2.9,2.9,0,1,0,12.371,8.163Z"
+                    />
+                    <ellipse
+                      class="cls-4"
+                      cx="6.992"
+                      cy="11.027"
+                      rx="2.542"
+                      ry="2.5"
+                    />
+                    <ellipse
+                      class="cls-3"
+                      cx="6.992"
+                      cy="11.027"
+                      rx="2.269"
+                      ry="2.205"
+                    />
+                    <ellipse
+                      class="cls-4"
+                      cx="12.371"
+                      cy="11.027"
+                      rx="2.542"
+                      ry="2.5"
+                    />
+                    <ellipse
+                      class="cls-3"
+                      cx="12.371"
+                      cy="11.027"
+                      rx="2.269"
+                      ry="2.205"
+                    />
+                    <g>
+                      <path
+                        class="cls-4"
+                        d="M4.524,16.778H5.178a1.288,1.288,0,0,1,.337.033,0.594,0.594,0,0,1,.267.16,0.754,0.754,0,0,1,.169.282,1.265,1.265,0,0,1,.058.411,1.128,1.128,0,0,1-.054.371,0.764,0.764,0,0,1-.189.308,0.63,0.63,0,0,1-.251.139,1.1,1.1,0,0,1-.316.037H4.524V16.778Zm0.357,0.294v1.153H5.148a0.982,0.982,0,0,0,.216-0.017,0.331,0.331,0,0,0,.145-0.072A0.369,0.369,0,0,0,5.6,17.969a1.111,1.111,0,0,0,.036-0.319A1.017,1.017,0,0,0,5.6,17.34a0.391,0.391,0,0,0-.1-0.168,0.339,0.339,0,0,0-.165-0.082,1.639,1.639,0,0,0-.293-0.017H4.882Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M6.148,17.258H6.509l0.307,0.9,0.3-.9H7.467L7.014,18.472l-0.081.22a0.9,0.9,0,0,1-.085.168,0.372,0.372,0,0,1-.093.094,0.412,0.412,0,0,1-.129.057,0.7,0.7,0,0,1-.173.02,0.927,0.927,0,0,1-.192-0.02l-0.03-.261a0.765,0.765,0,0,0,.144.015A0.215,0.215,0,0,0,6.549,18.7a0.482,0.482,0,0,0,.087-0.174Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M8.85,18.519H8.511V17.875a0.975,0.975,0,0,0-.021-0.264,0.185,0.185,0,0,0-.071-0.093A0.2,0.2,0,0,0,8.3,17.485a0.276,0.276,0,0,0-.158.047,0.24,0.24,0,0,0-.1.126,1.055,1.055,0,0,0-.026.29v0.571H7.682V17.258H8v0.186a0.532,0.532,0,0,1,.628-0.174,0.347,0.347,0,0,1,.141.1,0.372,0.372,0,0,1,.066.14,1.045,1.045,0,0,1,.019.225v0.784Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M9.448,17.643L9.14,17.588a0.472,0.472,0,0,1,.179-0.271A0.662,0.662,0,0,1,9.7,17.229a0.825,0.825,0,0,1,.338.053,0.335,0.335,0,0,1,.156.134,0.677,0.677,0,0,1,.045.3l0,0.389a1.341,1.341,0,0,0,.016.245,0.7,0.7,0,0,0,.061.169H9.973c-0.009-.022-0.02-0.055-0.032-0.1l-0.012-.039a0.613,0.613,0,0,1-.186.125,0.537,0.537,0,0,1-.211.042,0.442,0.442,0,0,1-.312-0.105,0.348,0.348,0,0,1-.114-0.267,0.355,0.355,0,0,1,.052-0.191A0.338,0.338,0,0,1,9.3,17.856a1.162,1.162,0,0,1,.27-0.078A1.892,1.892,0,0,0,9.9,17.7V17.663a0.171,0.171,0,0,0-.048-0.137,0.294,0.294,0,0,0-.183-0.041,0.249,0.249,0,0,0-.141.035A0.245,0.245,0,0,0,9.448,17.643ZM9.9,17.914a2.115,2.115,0,0,1-.207.051,0.658,0.658,0,0,0-.185.058,0.14,0.14,0,0,0-.066.118,0.163,0.163,0,0,0,.053.121,0.187,0.187,0,0,0,.135.051,0.3,0.3,0,0,0,.175-0.06,0.207,0.207,0,0,0,.081-0.11A0.643,0.643,0,0,0,9.9,17.98V17.914Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M10.545,17.258h0.313V17.43a0.506,0.506,0,0,1,.4-0.2,0.435,0.435,0,0,1,.213.05,0.384,0.384,0,0,1,.148.151,0.59,0.59,0,0,1,.183-0.151,0.453,0.453,0,0,1,.209-0.05,0.471,0.471,0,0,1,.239.056,0.345,0.345,0,0,1,.146.166,0.7,0.7,0,0,1,.035.261v0.806H12.091V17.8a0.535,0.535,0,0,0-.035-0.242,0.162,0.162,0,0,0-.145-0.071,0.235,0.235,0,0,0-.134.042,0.24,0.24,0,0,0-.09.125,0.885,0.885,0,0,0-.028.261v0.605H11.32V17.828A0.939,0.939,0,0,0,11.3,17.59a0.153,0.153,0,0,0-.056-0.08,0.182,0.182,0,0,0-.1-0.026,0.25,0.25,0,0,0-.142.042,0.229,0.229,0,0,0-.09.12,0.879,0.879,0,0,0-.027.26v0.613H10.545V17.258Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M12.769,17.087V16.778h0.339v0.309H12.769Zm0,1.432V17.258h0.339v1.261H12.769Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M14.574,17.631l-0.334.059a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186l0.333,0.056a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97A0.6,0.6,0,0,1,14,17.229a0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,14.574,17.631Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M4.525,20.969V19.228H5.1a2.144,2.144,0,0,1,.425.026,0.466,0.466,0,0,1,.255.17,0.535,0.535,0,0,1,.1.339,0.561,0.561,0,0,1-.059.27,0.478,0.478,0,0,1-.15.171,0.526,0.526,0,0,1-.185.083,2.078,2.078,0,0,1-.371.025H4.883v0.657H4.525Zm0.357-1.446v0.494h0.2a0.948,0.948,0,0,0,.283-0.027A0.235,0.235,0,0,0,5.473,19.9a0.227,0.227,0,0,0,.041-0.135,0.225,0.225,0,0,0-.057-0.157,0.25,0.25,0,0,0-.144-0.077,1.774,1.774,0,0,0-.257-0.012H4.883Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M6.5,20.969H6.158V19.708H6.473v0.179a0.546,0.546,0,0,1,.146-0.167,0.268,0.268,0,0,1,.147-0.041,0.436,0.436,0,0,1,.223.063l-0.1.291a0.3,0.3,0,0,0-.159-0.055,0.19,0.19,0,0,0-.121.039,0.264,0.264,0,0,0-.078.14,1.937,1.937,0,0,0-.028.422v0.39Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M7.057,20.321A0.676,0.676,0,0,1,7.14,20a0.568,0.568,0,0,1,.236-0.237,0.708,0.708,0,0,1,.341-0.082,0.647,0.647,0,0,1,.477.186A0.661,0.661,0,0,1,7.719,21a0.754,0.754,0,0,1-.336-0.078,0.542,0.542,0,0,1-.244-0.23A0.758,0.758,0,0,1,7.057,20.321ZM7.4,20.339a0.414,0.414,0,0,0,.09.287,0.3,0.3,0,0,0,.446,0,0.418,0.418,0,0,0,.09-0.29,0.411,0.411,0,0,0-.09-0.285,0.3,0.3,0,0,0-.446,0A0.414,0.414,0,0,0,7.4,20.339Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M9.821,20.969H9.506V20.784a0.511,0.511,0,0,1-.186.161A0.483,0.483,0,0,1,9.105,21a0.493,0.493,0,0,1-.379-0.175,0.705,0.705,0,0,1-.157-0.489,0.694,0.694,0,0,1,.153-0.487A0.5,0.5,0,0,1,9.11,19.68a0.483,0.483,0,0,1,.372.176V19.228H9.821v1.741Zm-0.906-.658a0.566,0.566,0,0,0,.057.292,0.257,0.257,0,0,0,.229.13,0.25,0.25,0,0,0,.2-0.1,0.445,0.445,0,0,0,.083-0.293A0.489,0.489,0,0,0,9.4,20.03a0.253,0.253,0,0,0-.2-0.1,0.257,0.257,0,0,0-.2.094A0.423,0.423,0,0,0,8.915,20.311Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M11,20.969V20.78a0.49,0.49,0,0,1-.184.159,0.52,0.52,0,0,1-.241.058,0.478,0.478,0,0,1-.232-0.056,0.33,0.33,0,0,1-.148-0.157,0.685,0.685,0,0,1-.046-0.279v-0.8h0.339v0.58a1.573,1.573,0,0,0,.019.326,0.175,0.175,0,0,0,.068.095,0.211,0.211,0,0,0,.125.035,0.271,0.271,0,0,0,.156-0.047,0.242,0.242,0,0,0,.094-0.116,1.347,1.347,0,0,0,.025-0.34V19.708h0.339v1.261H11Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M12.784,20.081l-0.334.059a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186L12.8,20.541a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97,0.6,0.6,0,0,1,.454-0.174,0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,12.784,20.081Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M13.629,19.708v0.266H13.4v0.508a1.156,1.156,0,0,0,.007.18,0.074,0.074,0,0,0,.03.042,0.1,0.1,0,0,0,.058.017,0.443,0.443,0,0,0,.136-0.032l0.029,0.259a0.687,0.687,0,0,1-.268.05,0.424,0.424,0,0,1-.166-0.03,0.237,0.237,0,0,1-.108-0.078,0.308,0.308,0,0,1-.048-0.13,1.59,1.59,0,0,1-.011-0.235v-0.55H12.9V19.708h0.156v-0.25l0.34-.195v0.445h0.232Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M13.745,20.609l0.34-.051a0.245,0.245,0,0,0,.088.147,0.3,0.3,0,0,0,.186.051,0.34,0.34,0,0,0,.2-0.048A0.1,0.1,0,0,0,14.6,20.62a0.087,0.087,0,0,0-.024-0.063,0.28,0.28,0,0,0-.114-0.044,1.85,1.85,0,0,1-.52-0.163,0.323,0.323,0,0,1-.152-0.284,0.348,0.348,0,0,1,.132-0.276,0.622,0.622,0,0,1,.408-0.111,0.719,0.719,0,0,1,.392.084,0.432,0.432,0,0,1,.176.249l-0.32.058a0.2,0.2,0,0,0-.078-0.113,0.29,0.29,0,0,0-.164-0.039,0.375,0.375,0,0,0-.192.037,0.079,0.079,0,0,0-.039.068,0.073,0.073,0,0,0,.034.061,1.255,1.255,0,0,0,.317.094,0.955,0.955,0,0,1,.378.148,0.307,0.307,0,0,1,.106.249,0.379,0.379,0,0,1-.147.3A0.661,0.661,0,0,1,14.36,21a0.723,0.723,0,0,1-.415-0.1A0.478,0.478,0,0,1,13.745,20.609Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M4.515,23.419V21.678H4.872v1.741H4.515Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M6.376,23.419H6.037V22.775a0.975,0.975,0,0,0-.021-0.264,0.185,0.185,0,0,0-.071-0.093,0.2,0.2,0,0,0-.118-0.033,0.276,0.276,0,0,0-.158.047,0.24,0.24,0,0,0-.1.126,1.055,1.055,0,0,0-.026.29v0.571H5.208V22.158H5.523v0.186a0.532,0.532,0,0,1,.628-0.174,0.347,0.347,0,0,1,.141.1,0.372,0.372,0,0,1,.066.14,1.045,1.045,0,0,1,.019.225v0.784Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M7.838,22.531L7.5,22.59a0.238,0.238,0,0,0-.077-0.148,0.233,0.233,0,0,0-.155-0.05,0.255,0.255,0,0,0-.2.086,0.435,0.435,0,0,0-.075.288,0.5,0.5,0,0,0,.077.317,0.254,0.254,0,0,0,.206.092,0.23,0.23,0,0,0,.158-0.054,0.322,0.322,0,0,0,.087-0.186l0.333,0.056a0.578,0.578,0,0,1-.2.341,0.622,0.622,0,0,1-.4.115,0.592,0.592,0,0,1-.448-0.174,0.785,0.785,0,0,1,0-.97,0.6,0.6,0,0,1,.454-0.174,0.63,0.63,0,0,1,.373.1A0.549,0.549,0,0,1,7.838,22.531Z"
+                      />
+                      <path
+                        class="cls-4"
+                        d="M8.1,23.419V23.085H8.435v0.333H8.1Z"
+                      />
+                    </g>
+                    <circle class="cls-4" cx="16.339" cy="6.473" r="1.066" />
+                    <circle class="cls-3" cx="16.339" cy="6.473" r="0.78" />
+                    <g>
+                      <rect
+                        class="cls-1"
+                        x="4.084"
+                        y="2.096"
+                        width="2.775"
+                        height="0.471"
+                        transform="translate(3.14 7.802) rotate(-90)"
+                      />
+                      <rect
+                        class="cls-1"
+                        x="15.804"
+                        y="2.096"
+                        width="2.775"
+                        height="0.471"
+                        transform="translate(14.86 19.522) rotate(-90)"
+                      />
+                    </g>
+                    <g>
+                      <rect
+                        class="cls-1"
+                        x="4.084"
+                        y="26.679"
+                        width="2.775"
+                        height="0.471"
+                        transform="translate(-21.444 32.386) rotate(-90)"
+                      />
+                      <rect
+                        class="cls-1"
+                        x="15.804"
+                        y="26.679"
+                        width="2.775"
+                        height="0.471"
+                        transform="translate(-9.723 44.106) rotate(-90)"
+                      />
+                    </g>
+                    <g>
+                      <rect
+                        class="cls-1"
+                        x="1.005"
+                        y="5.19"
+                        width="2.775"
+                        height="0.471"
+                      />
+                      <rect
+                        class="cls-1"
+                        x="18.75"
+                        y="5.19"
+                        width="2.775"
+                        height="0.471"
+                      />
+                    </g>
+                    <g>
+                      <rect
+                        class="cls-1"
+                        x="1.005"
+                        y="23.415"
+                        width="2.775"
+                        height="0.471"
+                      />
+                      <rect
+                        class="cls-1"
+                        x="18.75"
+                        y="23.415"
+                        width="2.775"
+                        height="0.471"
+                      />
+                    </g>
+                    <rect
+                      class="cls-4"
+                      x="15.17"
+                      y="8.444"
+                      width="2.339"
+                      height="5.084"
+                    />
+                  </g>
+                </g></svg
+            ></span>
+            <p class="blurb">
+              Manufacturer of butt-weld fittings and induction pipe bends for
+              the oil &amp; gas, petrochemical, refinery, power generation,
+              nuclear, and pipeline industries.
+            </p>
+          </div>
+          <div>
+            <span class="mono">Main plant</span>
+            <h3>Peninsula Boulevard</h3>
+            <address>16520 Peninsula Boulevard<br />Houston, TX 77015</address>
+          </div>
+          <div>
+            <span class="mono">Machining center</span>
+            <h3>South Sheldon Road</h3>
+            <address>1414 S Sheldon Road<br />Houston, TX 77015</address>
+          </div>
+          <div>
+            <span class="mono">Contact</span>
+            <h3>Sales</h3>
+            <address>
+              Phone 281-457-3500<br />Fax 281-457-2879<br />dpi@dynamicproducts.net
+            </address>
+          </div>
+        </div>
+        <div class="foot-certs" aria-label="Certifications">
+          <img
+            src="images/certs/iso-9001-2015.png"
+            alt="ISO 9001:2015"
+            width="56"
+            height="56"
+          />
+          <img
+            class="sq"
+            src="images/certs/asme-prt.png"
+            alt="ASME PRT"
+            width="56"
+            height="56"
+          />
+          <img
+            src="images/certs/ped-2014-68-eu.png"
+            alt="PED 2014/68/EU"
+            width="56"
+            height="56"
+          />
+          <img
+            class="sq"
+            src="images/certs/crn.png"
+            alt="CRN"
+            width="56"
+            height="56"
+          />
+          <img
+            src="images/certs/buy-america.png"
+            alt="Buy America compliant"
+            width="56"
+            height="56"
+          />
+          <img
+            src="images/certs/made-in-usa.png"
+            alt="Proudly Made in USA"
+            width="56"
+            height="56"
+          />
+        </div>
+        <div class="foot-bottom">
+          <span>&copy; 2026 Dynamic Products, Inc. All rights reserved.</span>
+          <nav aria-label="Footer">
+            <a href="#top">Terms &amp; Conditions</a
+            ><a href="#top">Privacy Policy</a><a href="#quality">Quality</a
+            ><a href="#contact">Careers</a>
+          </nav>
+          <span>Home page design concept by Gianno Solutions</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var header = document.getElementById("siteHeader");
+        var btn = document.getElementById("menuBtn");
+        btn.addEventListener("click", function () {
+          var open = header.getAttribute("data-open") !== "true";
+          header.setAttribute("data-open", open ? "true" : "false");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        });
+        document
+          .getElementById("siteNav")
+          .addEventListener("click", function (e) {
+            if (e.target.tagName === "A") {
+              header.setAttribute("data-open", "false");
+              btn.setAttribute("aria-expanded", "false");
+            }
+          });
+
+        var form = document.getElementById("rfqForm"),
+          note = document.getElementById("rfqNote");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var email = document.getElementById("f-email").value.trim();
+          if (
+            !document.getElementById("f-name").value.trim() ||
+            !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)
+          ) {
+            note.textContent =
+              "Enter your name and a valid email so a DPI representative can reply.";
+            return;
+          }
+          note.textContent =
+            "Design preview: on the live site this request goes to the Dynamic Products sales team.";
+        });
+
+        var reduce =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // hero photo fills the area above the stats panel
+        var heroEl = document.getElementById("top"),
+          panelEl = document.getElementById("heroPanel");
+        function sizeHeroImg() {
+          if (!heroEl || !panelEl) return;
+          var h =
+            panelEl.getBoundingClientRect().top -
+            heroEl.getBoundingClientRect().top +
+            60;
+          heroEl.style.setProperty(
+            "--hero-img-h",
+            Math.max(320, Math.round(h)) + "px",
+          );
+        }
+        sizeHeroImg();
+        window.addEventListener("resize", sizeHeroImg);
+        if (document.fonts && document.fonts.ready)
+          document.fonts.ready.then(sizeHeroImg);
+
+        // parallax backgrounds: the photo layer drifts slower than the page
+        var layers = [].slice.call(
+          document.querySelectorAll("[data-parallax]"),
+        );
+        if (layers.length && !reduce) {
+          var ticking = false;
+          function updatePx() {
+            ticking = false;
+            var vh = window.innerHeight;
+            layers.forEach(function (el) {
+              var sec = el.parentNode,
+                r = sec.getBoundingClientRect();
+              if (r.bottom < -200 || r.top > vh + 200) return;
+              var speed = parseFloat(el.getAttribute("data-parallax")) || 0.2;
+              var maxShift = sec.offsetHeight * 0.242;
+              var shift = (r.top + r.height / 2 - vh / 2) * -speed;
+              shift = Math.max(-maxShift, Math.min(maxShift, shift));
+              el.style.transform =
+                "translate3d(0," + shift.toFixed(1) + "px,0)";
+            });
+          }
+          function onPx() {
+            if (!ticking) {
+              ticking = true;
+              requestAnimationFrame(updatePx);
+            }
+          }
+          window.addEventListener("scroll", onPx, { passive: true });
+          window.addEventListener("resize", onPx);
+          updatePx();
+        }
+
+        // header: transparent over hero, solid after scrolling
+        function onScroll() {
+          header.classList.toggle("solid", window.scrollY > 40);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      })();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      window.THREE ||
+        document.write('<script src="js/three.min.js"><\/script>');
+    </script>
+    <script>
+      /* Studio renders of the four core fittings for the hero cards.
+   Renders once with Three.js r128, swaps each card's photo for a PNG of the model. */
+      (function () {
+        "use strict";
+        var slots = document.querySelectorAll("[data-fitting]");
+        if (!slots.length || !window.THREE) return;
+        var T = window.THREE;
+
+        var W = 640,
+          H = 340,
+          renderer;
+        try {
+          var cv = document.createElement("canvas");
+          renderer = new T.WebGLRenderer({
+            canvas: cv,
+            antialias: true,
+            alpha: true,
+            preserveDrawingBuffer: true,
+          });
+        } catch (e) {
+          return;
+        }
+        if (!renderer.getContext()) return;
+        renderer.setPixelRatio(1);
+        renderer.setSize(W, H, false);
+        renderer.setClearColor(0x000000, 0);
+        renderer.outputEncoding = T.sRGBEncoding;
+        renderer.toneMapping = T.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.05;
+
+        /* studio environment: soft boxes on a light grey room */
+        var envTex = (function () {
+          var env = new T.Scene();
+          env.add(
+            new T.Mesh(
+              new T.BoxGeometry(30, 16, 30),
+              new T.MeshBasicMaterial({ color: 0x5a5e66, side: T.BackSide }),
+            ),
+          );
+          function box(w, h, c, x, y, z) {
+            var p = new T.Mesh(
+              new T.PlaneGeometry(w, h),
+              new T.MeshBasicMaterial({ color: c, side: T.DoubleSide }),
+            );
+            p.position.set(x, y, z);
+            p.lookAt(0, 0, 0);
+            env.add(p);
+          }
+          box(10, 4, 0xffffff, -6, 7, 6);
+          box(8, 6, 0xdfe4ea, 9, 3, 4);
+          box(12, 2, 0xffffff, 0, 7.5, -8);
+          box(20, 8, 0x2a2c30, 0, -7.5, 0);
+          var pm = new T.PMREMGenerator(renderer);
+          var t = pm.fromScene(env, 0.04).texture;
+          pm.dispose();
+          return t;
+        })();
+
+        /* dark carbon-steel finish with light mill scale */
+        function steelMap(seed) {
+          var c = document.createElement("canvas");
+          c.width = 1024;
+          c.height = 512;
+          var g = c.getContext("2d"),
+            s = seed;
+          function r() {
+            s = (s * 16807) % 2147483647;
+            return (s - 1) / 2147483646;
+          }
+          g.fillStyle = "#34363a";
+          g.fillRect(0, 0, 1024, 512);
+          var tones = [
+            "rgba(20,22,26,",
+            "rgba(70,66,62,",
+            "rgba(52,54,60,",
+            "rgba(88,74,62,",
+            "rgba(30,32,36,",
+          ];
+          for (var i = 0; i < 360; i++) {
+            g.fillStyle =
+              tones[(r() * tones.length) | 0] + (0.05 + r() * 0.14) + ")";
+            g.beginPath();
+            g.ellipse(
+              r() * 1024,
+              r() * 512,
+              20 + r() * 140,
+              6 + r() * 50,
+              (r() - 0.5) * 0.6,
+              0,
+              Math.PI * 2,
+            );
+            g.fill();
+          }
+          for (i = 0; i < 200; i++) {
+            var y = r() * 512;
+            g.strokeStyle =
+              "rgba(" +
+              (r() > 0.5 ? "120,118,114," : "12,12,14,") +
+              (0.03 + r() * 0.07) +
+              ")";
+            g.lineWidth = 1 + r() * 3;
+            g.beginPath();
+            g.moveTo(r() * 1024, y);
+            g.lineTo(r() * 1024, y + (r() - 0.5) * 6);
+            g.stroke();
+          }
+          var img = g.getImageData(0, 0, 1024, 512),
+            d = img.data;
+          for (i = 0; i < d.length; i += 4) {
+            var n = (r() - 0.5) * 16;
+            d[i] += n;
+            d[i + 1] += n;
+            d[i + 2] += n;
+          }
+          g.putImageData(img, 0, 0);
+          var t = new T.CanvasTexture(c);
+          t.encoding = T.sRGBEncoding;
+          t.wrapS = t.wrapT = T.RepeatWrapping;
+          return t;
+        }
+        function outerMat(seed) {
+          return new T.MeshStandardMaterial({
+            map: steelMap(seed),
+            metalness: 0.72,
+            roughness: 0.46,
+            envMap: envTex,
+            envMapIntensity: 1.1,
+          });
+        }
+        var innerMat = new T.MeshStandardMaterial({
+          color: 0x1a1b1e,
+          metalness: 0.6,
+          roughness: 0.7,
+          side: T.BackSide,
+          envMap: envTex,
+          envMapIntensity: 0.35,
+        });
+        var bevelMat = new T.MeshStandardMaterial({
+          color: 0x8e9196,
+          metalness: 1,
+          roughness: 0.3,
+          envMap: envTex,
+          envMapIntensity: 1.2,
+          side: T.DoubleSide,
+        });
+
+        function ringAt(group, p, dir, rIn, rOut) {
+          var ring = new T.Mesh(new T.RingGeometry(rIn, rOut, 96, 1), bevelMat);
+          ring.position.copy(p);
+          ring.quaternion.setFromUnitVectors(
+            new T.Vector3(0, 0, 1),
+            dir.clone().normalize(),
+          );
+          group.add(ring);
+        }
+        // hollow pipe along any curve, with bevelled ends
+        function hollow(curve, rOut, rIn, seed, segs) {
+          var g = new T.Group();
+          g.add(
+            new T.Mesh(
+              new T.TubeGeometry(curve, segs || 160, rOut, 96, false),
+              outerMat(seed),
+            ),
+          );
+          g.add(
+            new T.Mesh(
+              new T.TubeGeometry(curve, segs || 160, rIn, 72, false),
+              innerMat,
+            ),
+          );
+          ringAt(g, curve.getPoint(0), curve.getTangent(0).negate(), rIn, rOut);
+          ringAt(g, curve.getPoint(1), curve.getTangent(1), rIn, rOut);
+          return g;
+        }
+        class Arc extends T.Curve {
+          constructor(R, ang, t1, t2) {
+            super();
+            this.R = R;
+            this.ang = ang;
+            this.t1 = t1 || 0;
+            this.t2 = t2 || 0;
+            this.len = this.t1 + R * ang + this.t2;
+          }
+          getPoint(t, target) {
+            target = target || new T.Vector3();
+            var s = t * this.len,
+              R = this.R,
+              A = this.ang;
+            if (s <= this.t1) return target.set(-this.t1 + s, 0, 0);
+            s -= this.t1;
+            if (s <= R * A) {
+              var a = s / R;
+              return target.set(R * Math.sin(a), R * (1 - Math.cos(a)), 0);
+            }
+            s -= R * A;
+            var ex = R * Math.sin(A),
+              ey = R * (1 - Math.cos(A));
+            return target.set(ex + Math.cos(A) * s, ey + Math.sin(A) * s, 0);
+          }
+        }
+        class Line extends T.Curve {
+          constructor(a, b) {
+            super();
+            this.a = a;
+            this.b = b;
+          }
+          getPoint(t, target) {
+            return (target || new T.Vector3()).lerpVectors(this.a, this.b, t);
+          }
+        }
+
+        // turn an arc fitting so its plane lies nearly flat and both openings face the camera
+        function lieFlat(g, ang) {
+          var inner = new T.Group();
+          inner.add(g);
+          inner.rotation.z = -ang / 2;
+          var mid = new T.Group();
+          mid.add(inner);
+          mid.rotation.x = Math.PI / 2;
+          var w = new T.Group();
+          w.add(mid);
+          w.rotation.x = 0.55;
+          return w;
+        }
+        // tight bounding box from the actual vertices
+        function preciseBox(obj) {
+          obj.updateMatrixWorld(true);
+          var box = new T.Box3(),
+            v = new T.Vector3();
+          obj.traverse(function (m) {
+            if (!m.isMesh || !m.geometry.attributes.position) return;
+            var p = m.geometry.attributes.position;
+            for (var i = 0; i < p.count; i += 3) {
+              v.fromBufferAttribute(p, i).applyMatrix4(m.matrixWorld);
+              box.expandByPoint(v);
+            }
+          });
+          return box;
+        }
+        var builders = {
+          elbow: function () {
+            // 90 deg long radius elbow, R = 1.5 x OD, both bores facing the viewer
+            return lieFlat(
+              hollow(new Arc(1.5, Math.PI / 2), 0.5, 0.44, 11),
+              Math.PI / 2,
+            );
+          },
+          tee: function () {
+            var w = new T.Group();
+            var run = hollow(
+              new Line(new T.Vector3(-1.6, 0, 0), new T.Vector3(1.6, 0, 0)),
+              0.62,
+              0.55,
+              23,
+              4,
+            );
+            // branch whose base follows the saddle line on the run, with a fillet that
+            // grows where the crease is sharpest (the sides) and vanishes at the front
+            var R = 0.62,
+              rho = 0.16,
+              NP = 128,
+              NY = 40,
+              top = 1.25;
+            var pos = [],
+              uv = [],
+              idx = [];
+            for (var j = 0; j <= NY; j++) {
+              for (var i = 0; i <= NP; i++) {
+                var ph = (i / NP) * Math.PI * 2,
+                  c = Math.abs(Math.cos(ph));
+                var yc =
+                  R * Math.sqrt(Math.max(0, 1 - Math.sin(ph) * Math.sin(ph))) -
+                  0.04;
+                var t = j / NY,
+                  y = yc + (top - yc) * t;
+                var f = Math.max(0, 1 - (y - yc) / 0.45),
+                  off = rho * c * f * f;
+                var r = R + off;
+                pos.push(r * Math.cos(ph), y, r * Math.sin(ph));
+                uv.push(i / NP, t);
+              }
+            }
+            for (j = 0; j < NY; j++)
+              for (i = 0; i < NP; i++) {
+                var a0 = j * (NP + 1) + i,
+                  a1 = a0 + 1,
+                  b0 = a0 + NP + 1,
+                  b1 = b0 + 1;
+                idx.push(a0, b0, a1, a1, b0, b1);
+              }
+            var bg = new T.BufferGeometry();
+            bg.setAttribute("position", new T.Float32BufferAttribute(pos, 3));
+            bg.setAttribute("uv", new T.Float32BufferAttribute(uv, 2));
+            bg.setIndex(idx);
+            bg.computeVertexNormals();
+            var branch = new T.Group();
+            var bm = outerMat(29);
+            bm.side = T.DoubleSide;
+            branch.add(new T.Mesh(bg, bm));
+            var bi = new T.Mesh(
+              new T.CylinderGeometry(0.55, 0.55, 0.7, 72, 1, true),
+              innerMat,
+            );
+            bi.position.y = top - 0.35;
+            branch.add(bi);
+            ringAt(
+              branch,
+              new T.Vector3(0, top, 0),
+              new T.Vector3(0, 1, 0),
+              0.55,
+              0.62,
+            );
+            w.add(run, branch);
+            // smooth saddle where branch meets run
+            w.rotation.set(0.2, -0.24, 0);
+            return w;
+          },
+          reducer: function () {
+            // concentric reducer, large end down
+            var w = new T.Group();
+            function profile(r1, r2) {
+              return [
+                new T.Vector2(r1, -0.9),
+                new T.Vector2(r1, -0.55),
+                new T.Vector2(r1 * 0.97, -0.35),
+                new T.Vector2(r2 * 1.04, 0.5),
+                new T.Vector2(r2, 0.68),
+                new T.Vector2(r2, 0.9),
+              ];
+            }
+            var outer = new T.Mesh(
+              new T.LatheGeometry(profile(1.05, 0.62), 128),
+              outerMat(41),
+            );
+            var inner = new T.Mesh(
+              new T.LatheGeometry(profile(0.97, 0.55), 128),
+              innerMat,
+            );
+            w.add(outer, inner);
+            ringAt(
+              w,
+              new T.Vector3(0, 0.9, 0),
+              new T.Vector3(0, 1, 0),
+              0.55,
+              0.62,
+            );
+            ringAt(
+              w,
+              new T.Vector3(0, -0.9, 0),
+              new T.Vector3(0, -1, 0),
+              0.97,
+              1.05,
+            );
+            w.rotation.set(0.42, 0, 0);
+            return w;
+          },
+          bend: function () {
+            // 5D induction bend with tangents
+            return lieFlat(
+              hollow(
+                new Arc(2.6, (Math.PI / 2) * 0.92, 0.7, 0.7),
+                0.4,
+                0.35,
+                53,
+                200,
+              ),
+              (Math.PI / 2) * 0.92,
+            );
+          },
+        };
+
+        function renderFitting(kind) {
+          var scene = new T.Scene();
+          var obj = builders[kind]();
+          scene.add(obj);
+          // centre and frame
+          var box = preciseBox(obj),
+            c = box.getCenter(new T.Vector3()),
+            sz = box.getSize(new T.Vector3());
+          obj.position.sub(c);
+          var cam = new T.PerspectiveCamera(26, W / H, 0.1, 100);
+          var fit =
+            (Math.max(sz.x / (W / H), sz.y) * 0.5) /
+            Math.tan((13 * Math.PI) / 180);
+          cam.position.set(0, sz.y * 0.1, fit * 1.02 + sz.z * 0.5);
+          cam.lookAt(0, -sz.y * 0.04, 0);
+          // lights
+          scene.add(new T.HemisphereLight(0xf2f4f8, 0x2a2622, 0.55));
+          var key = new T.DirectionalLight(0xffffff, 1.5);
+          key.position.set(-4, 6, 6);
+          scene.add(key);
+          var rim = new T.DirectionalLight(0xcfd8e6, 0.9);
+          rim.position.set(5, 3, -5);
+          scene.add(rim);
+          // soft contact shadow
+          var sc = document.createElement("canvas");
+          sc.width = sc.height = 128;
+          var sg = sc.getContext("2d");
+          var gr = sg.createRadialGradient(64, 64, 0, 64, 64, 64);
+          gr.addColorStop(0, "rgba(0,0,0,0.42)");
+          gr.addColorStop(1, "rgba(0,0,0,0)");
+          sg.fillStyle = gr;
+          sg.fillRect(0, 0, 128, 128);
+          var shadow = new T.Mesh(
+            new T.PlaneGeometry(sz.x * 1.25, Math.max(sz.z, 0.8) * 1.2),
+            new T.MeshBasicMaterial({
+              map: new T.CanvasTexture(sc),
+              transparent: true,
+              depthWrite: false,
+            }),
+          );
+          shadow.rotation.x = -Math.PI / 2;
+          shadow.position.y = -sz.y / 2 - 0.02;
+          scene.add(shadow);
+          renderer.render(scene, cam);
+          return renderer.domElement.toDataURL("image/png");
+        }
+
+        var cache = {};
+        try {
+          for (var i = 0; i < slots.length; i++) {
+            var kind = slots[i].getAttribute("data-fitting");
+            if (!builders[kind]) continue;
+            cache[kind] = cache[kind] || renderFitting(kind);
+            slots[i].src = cache[kind];
+            slots[i].classList.add("is-3d");
+          }
+        } catch (e) {
+          /* keep the photos */
+        }
+        renderer.dispose();
+        if (renderer.forceContextLoss) renderer.forceContextLoss();
+      })();
+    </script>
+  </body>
+</html>
