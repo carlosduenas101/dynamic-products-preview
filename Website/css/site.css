@@ -3790,3 +3790,57 @@ html.dlg-open { overflow: hidden; }
 @media (max-width: 560px) { .dp-dialog .form { grid-template-columns: minmax(0, 1fr); } }
 :root[data-theme="dark"] .dp-dialog { background: var(--surface); color: var(--fg); }
 :root[data-theme="dark"] .dp-dialog-x { background: var(--surface-2); border-color: var(--line); color: var(--fg); }
+
+/* section icons: artwork supplied by design, used as-is */
+.ic.ic-img {
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  display: block;
+  place-items: start;
+  justify-items: start;
+  box-shadow: none;
+}
+.ic.ic-img img {
+  display: block;
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0 0 0 -4px;
+}
+:root[data-theme="dark"] .ic.ic-img img {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 8px;
+  width: 96px;
+  height: 96px;
+  object-position: center;
+}
+
+/* home "For all your needs": same soft-card style as the tiles on Fitting Solutions and Careers */
+.sol-grid {
+  gap: 18px;
+  background: none;
+  border: 0;
+}
+.sol {
+  padding: 26px 24px 28px;
+  gap: 12px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 2px 6px rgba(8, 13, 21, 0.06),
+    0 18px 40px -12px rgba(8, 13, 21, 0.28);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sol:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 4px 10px rgba(8, 13, 21, 0.08),
+    0 32px 60px -14px rgba(8, 13, 21, 0.38);
+}
+.sol p { line-height: 1.55; }
+:root[data-theme="dark"] .sol { background: var(--surface); }
